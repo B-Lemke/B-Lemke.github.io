@@ -8,7 +8,11 @@
   <!-- Bootstrap CSS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="resources/scripts/activeController.js"></script>
+  <!--Angular JS and UI Bootstrap. UI Bootstrap makes angular and bootstrap get along nicely -->
+  <script src="resources/scripts/angular.min.js"></script>
+  <script src="resources/scripts/activeController.js"></script>
 
 
   <link rel="stylesheet" type = "text/css" href="resources/styles/main.css">
@@ -16,26 +20,37 @@
   <link rel="stylesheet" type = "text/css" href="resources/styles/theme.css">
 
 </head>
-<body ng-app="" class="bg-dark">
-  <header class="container">
+<body ng-app="myApp" class="bg-dark">
+  <header>
     <!--Angular Include finds the HTML from the header.html file and inserts it in this div tag -->
     <div ng-include src="'header.html'"></div>
   </header>
 
-  <div id="top-blurb">
+  <section id="top-blurb">
+    <div class="container-fluid">
     <!-- End navigation bar -->
     <!-- Main image and welcome box with name and title-->
-    <img src="resources/images/headshot.jpg" alt="Picture of Broderick Lemke"
-    class="round-image profile-image pulse"></img>
     <div class="row">
-      <div class="jumbotron bg-dark text-center rounded dark-glow">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <img src="resources/images/headshot.jpg" alt="Picture of Broderick Lemke"
+        class="rounded-circle pulse img-fluid"></img>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-2"></div>
+      <div class="jumbotron bg-dark text-center rounded dark-glow col-md-8">
         <h1 class="text-primary display-2 font-weight-bold">Broderick Lemke;</h1>
         <h2 class="text-secondary display-4 font-weight-bold font-italic">21st Century Creative</h2>
         <p class="text-info display-5"> <em> A Jack of all trades is a master of none, but
           oftentimes better than a master of one. </em> </p>
         </div>
       </div>
+      <div class="col-md-2"></div>
     </div>
+  </section>
     <!-- This is all below the main top-blurb of the homepage. -->
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -45,9 +60,7 @@
     </footer>
 
 
-    <!--Angular JS and UI Bootstrap. UI Bootstrap makes angular and bootstrap get along nicely -->
-    <script src="resources/scripts/angular.min.js"></script>
-    <script src="resources/scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
 
   </body>
   </html>

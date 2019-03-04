@@ -3,44 +3,8 @@ body{
 
 }
 
-/*Intro text blurb */
-.welcome-text {
-  text-align: center;
-}
 
-.welcome-box {
-  border: 1px solid #000000;
-  width: 70%;
-  margin: auto;
-  color: #ffd25a;
-  background: #191919;
-  border-radius: 15px;
-  box-shadow: 0px 0px 200px  #191919;
-  font-family: courier;
-}
 
-.welcome-box:hover{
-  color: #fff05a
-  border: 1px solid #fff05a;
-}
-
-.name{
-  margin: 0px;
-}
-
-.navbar{
-  margin-top: 0px;
-}
-
-/*image on the main page, round and centerd*/
-.profile-image {
-      width: 25%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 4%;
-      box-shadow: 0px 0px 100px #851800;
-}
 
 #top-blurb {
   padding-bottom: 20px;

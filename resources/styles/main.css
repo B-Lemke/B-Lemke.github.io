@@ -26,12 +26,17 @@ footer p {
   padding:1%;
   }
 
-.jumbotron {
-  width: 80% !important;
-  margin: auto;
 
-}
 
 .dark-glow {
   box-shadow: 0 0 10px 1px #191919;
+}
+
+.navbar {
+  z-index: 1;
+
+}
+
+.pulse {
+  z-index: 2;
 }
