@@ -1,0 +1,137 @@
+body{
+  background: #ff785a;
+
+}
+
+/*Intro text blurb */
+.welcome-text {
+  text-align: center;
+}
+
+.welcome-box {
+  border: 1px solid #000000;
+  width: 70%;
+  margin: auto;
+  color: #ffd25a;
+  background: #191919;
+  border-radius: 15px;
+  box-shadow: 0px 0px 200px  #191919;
+  font-family: courier;
+}
+
+.welcome-box:hover{
+  color: #fff05a
+  border: 1px solid #fff05a;
+}
+
+.name{
+  margin: 0px;
+}
+
+.navbar{
+  margin-top: 0px;
+}
+
+/*image on the main page, round and centerd*/
+.profile-image {
+      width: 25%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 4%;
+      box-shadow: 0px 0px 100px #851800;
+}
+
+#top-blurb {
+  padding-bottom: 20px;
+  padding-top: 40px;
+  background-image: url(../images/backgroundtile2.jpg);
+  background-repeat: repeat;
+  box-shadow: 0 0 300px 10px #FF5B40;
+}
+
+/*pulsing behind the picture and welcome slide*/
+
+.pulse {
+  box-shadow: 0 0 0 #851800;
+  animation: pulse 2.5s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 100px 0 #ff785a;
+  }
+  50% {
+      -webkit-box-shadow: 0 0 300px 100px #ffd25a;
+  }
+  100% {
+      -webkit-box-shadow: 0 0 100px 0 #ff785a;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 100px 0 #ff785a;
+    box-shadow: 0 0 100px 0 #ff785a;
+  }
+  50% {
+      -moz-box-shadow: 0 0 300px 100px #ffd25a;
+      box-shadow: 0 0 300px 100px #ffd25a;
+  }
+  100% {
+      -moz-box-shadow: 0 0 100px 0 #ff785a;
+      box-shadow: 0 0 100px 0 #ff785a;
+  }
+}
+
+
+
+
+/*
+
+.pulse {
+  cursor: pointer;
+  box-shadow: 0 0 0 #851800;
+  animation: pulse 8s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 200px 0 #191919;
+  }
+  20% {
+      -webkit-box-shadow: 0 0 200px 3px #851800;
+  }
+  50% {
+      -webkit-box-shadow: 0 0 100px 1px #ffd25a;
+  }
+  70% {
+      -webkit-box-shadow: 0 0 200px 3px #851800;
+  }
+  100% {
+    -webkit-box-shadow: 0 0 200px 0 #191919;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 200px 0 #191919;
+    box-shadow: 0 0 200px 0 #191919;
+  }
+  20% {
+      -moz-box-shadow: 0 0 200px 3px #851800;
+      box-shadow: 0 0 200px 3px #851800;
+  }
+  50% {
+      -moz-box-shadow: 0 0 100px 1px #ffd25a;
+      box-shadow: 0 0 100px 1px #ffd25a;
+  }
+  70% {
+      -moz-box-shadow: 0 0 200px 3px #851800;
+      box-shadow: 0 0 200px 5px #851800;
+  }
+  100% {
+    -moz-box-shadow: 0 0 200px 0 #191919;
+    box-shadow: 0 0 200px 0 #191919;
+}
+*/

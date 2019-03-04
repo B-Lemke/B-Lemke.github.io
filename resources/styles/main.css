@@ -1,0 +1,37 @@
+body {
+  background: #ff785a;
+  background-image: url("../images/backgroundtile2.jpg");
+  font-family:  "garamond", serif;
+  color: #ffd25a;
+}
+
+/*Make an image round CSS */
+.round-image {
+    border-radius: 50%;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+.content {
+  margin-top: 25px;
+  background: #191919;
+  border: 2px solid #ffaa5a;
+  border-radius: 5px;
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px 1px #191919;
+  padding:1%;
+  }
+
+.jumbotron {
+  width: 80% !important;
+  margin: auto;
+
+}
+
+.dark-glow {
+  box-shadow: 0 0 10px 1px #191919;
+}

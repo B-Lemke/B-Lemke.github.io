@@ -1,0 +1,17 @@
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: unset; // 1
+}
+
+.audiojs {
+  margin-left: 0;
+  border-radius: 5px;
+}
+
+body {
+  background-image: url("../images/backgroundtile2.jpg");
+}

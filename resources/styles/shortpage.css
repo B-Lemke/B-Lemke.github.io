@@ -1,0 +1,5 @@
+footer{
+position: absolute;
+bottom: 0;
+}
+/* This little fix will move the footer to the bottom of the screen if the content is not long enough */
