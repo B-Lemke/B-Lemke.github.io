@@ -10,8 +10,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <!--Angular JS and UI Bootstrap. UI Bootstrap makes angular and bootstrap get along nicely -->
-   <script src="resources/scripts/angular.min.js"></script>
-   <script src="resources/scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
+  <script src="resources/scripts/angular.min.js"></script>
+  <script src="resources/scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
   <script src="resources/scripts/activeController.js"></script>
 
   <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico">
@@ -20,7 +20,7 @@
   <link rel="stylesheet" type = "text/css" href="resources/styles/main.css">
   <link rel="stylesheet" type = "text/css" href="resources/styles/index.css">
   <link rel="stylesheet" type = "text/css" href="resources/styles/theme.css">
-
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi" />
 </head>
 <body ng-app="myApp" class="bg-dark">
   <header>
@@ -28,8 +28,8 @@
     <div ng-include src="'header.html'"></div>
   </header>
 
-  <section id="top-blurb">
-    <div class="container-fluid">
+<div  id="top-blurb">
+  <div class="container">
     <!-- End navigation bar -->
     <!-- Main image and welcome box with name and title-->
     <div class="row">
@@ -43,24 +43,38 @@
 
     <div class="row mt-5">
       <div class="col-md-2"></div>
-      <div class="jumbotron bg-dark text-center rounded dark-glow col-md-8">
-        <h1 class="text-primary display-2 font-weight-bold">Broderick Lemke;</h1>
-        <h2 class="text-secondary display-4 font-weight-bold font-italic">21st Century Creative</h2>
-        <p class="text-info display-5"> <em> A Jack of all trades is a master of none, but
+      <div class="jumbotron bg-dark text-center rounded dark-glow col-md-8 container-fluid">
+        <div class="row">
+          <h1 class="text-primary display-3 font-weight-bold col-12">Broderick Lemke;</h1>
+        </div>
+        <div class="row">
+        <h2 class="text-secondary display-5 font-weight-bold font-italic col-12">21st Century Creative</h2>
+      </div>
+      <div class="row">
+        <p class="text-info display-6  col-12"> <em> A Jack of all trades is a master of none, but
           oftentimes better than a master of one. </em> </p>
         </div>
+        </div>
+        <div class="col-md-2"></div>
       </div>
-      <div class="col-md-2"></div>
     </div>
-  </section>
+  </div>
     <!-- This is all below the main top-blurb of the homepage. -->
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
+
+    <section class="container-fluid mt-5" >
+      <div class="row">
+        <div class="col-md-1"></div>
+          <div class="col-md-10 bg-light dark-glow">
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          </div>
+        <div class="col-md-1"></div>
+      </div>
+    </section>
 
     <footer ng-include src="'footer.html'">
       <!--Angular Include finds the HTML from the footer.html file and inserts it in this div tag -->
     </footer>
-
 
 
 

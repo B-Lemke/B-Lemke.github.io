@@ -1,8 +1,16 @@
+
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
 body {
   background: #ff785a;
   background-image: url("../images/backgroundtile2.jpg");
   font-family:  "garamond", serif;
   color: #ffd25a;
+  position: relative;
+  padding-bottom: 50px;
 }
 
 /*Make an image round CSS */
@@ -12,6 +20,7 @@ body {
 
 footer p {
   margin-bottom: 0;
+  border-top: 1px dashed #191919;
 }
 
 .content {
@@ -25,8 +34,6 @@ footer p {
   box-shadow: 0 0 10px 1px #191919;
   padding:1%;
   }
-
-
 
 .dark-glow {
   box-shadow: 0 0 10px 1px #191919;
