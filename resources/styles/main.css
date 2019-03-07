@@ -47,3 +47,26 @@ footer p {
 .pulse {
   z-index: 2;
 }
+
+.image-scale{
+  width: 75%;
+}
+
+.header-bg{
+background: linear-gradient(90deg, #191919, #ff785a);
+}
+
+.active{
+  background: #ff785a;
+  padding-bottom: 5px;
+}
+
+.bg-texture {
+  background-color: #191919;
+  background-image: url(../images/3px-tile.png);
+}
+
+.nav-link{
+  margin: 0px 10px;
+  min-width: 200px;
+}

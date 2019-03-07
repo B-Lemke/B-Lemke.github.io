@@ -22,7 +22,7 @@
   <link rel="stylesheet" type = "text/css" href="resources/styles/theme.css">
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi" />
 </head>
-<body ng-app="myApp" class="bg-dark">
+<body ng-app="myApp" class="bg-texture">
   <header>
     <!--Angular Include finds the HTML from the header.html file and inserts it in this div tag -->
     <div ng-include src="'header.html'"></div>
@@ -65,8 +65,26 @@
     <section class="container-fluid mt-5" >
       <div class="row">
         <div class="col-md-1"></div>
-          <div class="col-md-10 bg-light dark-glow">
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <div class="col-md-10 bg-light dark-glow container-fluid">
+            <div class="row bg-light">
+                <div class="col-md-4 bg-success text-center">
+                  <img src="resources/images/lime.png" class="mt-2 mb-2 image-scale"/>
+                </div>
+
+                <div class="col-md-8 bg-secondary container">
+                  <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10  bg-light mt-4 p-2">
+                      <p><span class="font-weight-bold font-italic">Broderick Lemke</span> is a native of the Fox Valley region of North East Wisconsin. He has a Bachelor's degree in Music Liberal Arts, and has a passion for anything related to art. He has had musical works performed by several local ensembles, and continues to create new works in both the visual and musical arts. As his most recent challenge, he has chosen to pursue a Software Development Associate's degree from Fox Valley Technical College. He is looking forward to harnessing his creativity in new ways and creating digital content that explores relationships between technology and the arts. </p>
+                    </div>
+                    <div class="col-md-1"></div>
+                  </div>
+                </div>
+            </div>
+            <div class="row bg-primary">
+                <br><br><br><br><br><br>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
         <div class="col-md-1"></div>
       </div>
