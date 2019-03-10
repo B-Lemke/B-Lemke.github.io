@@ -78,3 +78,47 @@ background: linear-gradient(90deg, #191919, #ff785a);
   }
 
 }
+
+.card {
+  margin-bottom: 15px !important;
+  box-shadow: 2px 2px 10px #191919;
+}
+
+.badge-javascript{
+  background: #ff785a;
+}
+
+.badge-p5js{
+  background: #FFC300;
+}
+
+.badge-tonejs{
+  background: #4869FD;
+  color: #f7f5f2;
+}
+
+.badge-python{
+  background: #DAF7A6;
+}
+
+.badge-bs4{
+  background: #581845;
+  color: #f7f5f2;
+}
+
+.badge-broken{
+  background: #191919;
+  color: #f7f5f2;
+}
+
+.badge-csharp{
+  background: #D7BDE2;
+}
+
+.badge-xamarin{
+  background: #A9CCE3;
+}
+
+.badge-mobile{
+  background: #FDEBD0;
+}

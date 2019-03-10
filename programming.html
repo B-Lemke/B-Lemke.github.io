@@ -1,123 +1,154 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Broderick Lemke</title>
-    <!-- Bootstrap CSS -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Broderick Lemke</title>
+  <!-- Bootstrap CSS -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!--Angular JS and UI Bootstrap. UI Bootstrap makes angular and bootstrap get along nicely -->
-     <script src="resources/scripts/angular.min.js"></script>
-     <script src="resources/scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
-    <script src="resources/scripts/activeController.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!--Angular JS and UI Bootstrap. UI Bootstrap makes angular and bootstrap get along nicely -->
+  <script src="resources/scripts/angular.min.js"></script>
+  <script src="resources/scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
+  <script src="resources/scripts/activeController.js"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico">
 
-    <link rel="stylesheet" type = "text/css" href="resources/styles/main.css">
-    <link rel="stylesheet" type = "text/css" href="resources/styles/theme.css">
+  <link rel="stylesheet" type = "text/css" href="resources/styles/main.css">
+  <link rel="stylesheet" type = "text/css" href="resources/styles/theme.css">
 
-  </head>
-  <body ng-app="myApp">
-    <header>
-      <!--Angular Include finds the HTML from the header.html file and inserts it in this div tag -->
-      <div ng-include src="'header.html'"></div>
-    </header>
+</head>
+<body ng-app="myApp">
+  <header>
+    <!--Angular Include finds the HTML from the header.html file and inserts it in this div tag -->
+    <div ng-include src="'header.html'"></div>
+  </header>
 
-    <section class="container-fluid mt-5" >
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 bg-light dark-glow rounded container-fluid p-3">
-          <h2 class="text-weight-bold mt-2">Programming</h2>
+  <section class="container-fluid mt-5" >
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 bg-light dark-glow rounded container-fluid p-3">
+        <h2 class="text-weight-bold mt-2">Programming</h2>
 
-          <div class="row mt-2">
-            <div class="col-md-4">
-              <div class="card">
-                <img class="card-img-top" src="/resources/images/gameoflife.PNG" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">Game of Life</h4>
+        <div class="row mt-2">
 
-                  <p class="card-text">Conway's game of life is a cellular automaton that utilizes an algorithm to decide whether each cell will "live" or "die". This example is highly visual and shows use of the p5.js library, array traversal, the ability to translate an algorithm into JavaScript, executes complex logic, contains nested loops, handles events, and shows that I can break down a real-life problem and replicate it in JavaScript.  </p>
-                  <a href="/programming/gameoflife/life.html" class="btn btn-primary">View Project</a>
-                  <br />
-                  <span class="badge badge-pill badge-secondary">JavaScript</span><span class="badge badge-pill badge-warning">P5.JS</span>
-                </div>
+          <!-- Column 1 ------------------------------>
+          <div class="col-md-4">
+            <div class="card">
+              <img class="card-img-top" src="/resources/images/gameoflife.PNG" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Game of Life</h4>
+
+                <p class="card-text">Conway's game of life is a cellular automaton that utilizes an algorithm to decide whether each cell will "live" or "die". This example is highly visual and shows use of the p5.js library, array traversal, the ability to translate an algorithm into JavaScript, executes complex logic, contains nested loops, handles events, and shows that I can break down a real-life problem and replicate it in JavaScript.  </p>
+                <a href="/programming/gameoflife/life.html" class="btn btn-primary">View Project</a>
+                <br />
+                <span class="badge badge-pill badge-javascript">JavaScript</span><span class="badge badge-pill badge-p5js">P5.JS</span>
               </div>
             </div>
 
-            <div class="col-md-4">
-              <div class="card">
-                <img class="card-img-top" src="/resources/images/fvtcwebscraper.PNG" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">FVTC Web Scraper</h4>
-                  <p class="card-text">This is a web scraper that creates a JSON file of the clusters, programs and courses at Fox Valley Technical College. The output can be seen by clicking "View Results" and the code can be seen in the github repo linked below as well.</p>
-                  <a href="/programming/fvtcwebscraper/clusterInfo.json" class="btn btn-primary">View Results</a> <a href="https://github.com/B-Lemke/FVTCWebScraper" class="btn btn-primary ml-2">View Github Repo</a>
-                  <br />
-                  <span class="badge badge-pill badge-success">Python</span><span class="badge badge-pill badge-info">BeautifulSoup4</span>
-                </div>
+            <div class="card">
+              <img class="card-img-top" src="/resources/images/clappingmusic.PNG" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Clapping Music</h4>
+                <p class="card-text">Steve Reich composed Clapping Music in 1972. The piece is written for two performers to clap and to go in and out of "phase" with each other. This javascript project created using the ToneJS framework recreates the piece using JavaScript. It also features some beautiful emojis, because who doesn't love emojis?</p>
+                <a href="/programming/clappingMusic/index.html" class="btn btn-primary">View Project</a>
+                <br />
+                <span class="badge badge-pill badge-javascript">JavaScript</span><span class="badge badge-pill badge-tonejs">ToneJS</span>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="/resources/images/nasa.png" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Nasa Art Project</h4>
+
+                <p class="card-text">  In an effort to learn how to use APIs, I decided to used Nasa's picture of the day API. I use the API to grab a random picture from their database and perform a 'fuzzy' visual effect on it. This project shows that I can make a call to an API, use an API key, parse the JSON that I recieve back from an API call, manipulate images, and place data in the DOM. <span class="font-weight-bold text-secondary">This project is currently not working properly because of a CORS header issue.</span> If you wish to view it, you must download an extension for your browser to allow resources to be shared across domains regardless of headers. <a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf/related?hl=en">Here</a> is the one I use for chrome.</p>
+                <a href="/programming/nasa/nasa.html" class="btn btn-primary">View Project</a>
+                <br />
+                <span class="badge badge-pill badge-javascript">JavaScript</span><span class="badge badge-pill badge-p5js">P5.JS</span><span class="badge badge-pill badge-dark">Partially Broken</span>
               </div>
             </div>
 
-            <div class="col-md-4">
-              <div class="card">
-                <img class="card-img-top" src="/resources/images/fractaltree.PNG" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">Breezy Day for Fractal Trees</h4>
-                  <p class="card-text">This is a visualization of a mathematical concept that hass always interested me: Fractals! This fractal tree visualiztion is an example of recursion in javascript. It uses inputs from HTML sliders, calculates mathematic variables, synthesizes basic wind sounds out of noise using a Low Frequency Oscillator, shows use of recursion to produce a mathematically complex result. </p>
-                  <a href="/programming/trees/tree.html" class="btn btn-primary">View Project</a>
-                  <br />
-                  <span class="badge badge-pill badge-secondary">JavaScript</span><span class="badge badge-pill badge-warning">P5.JS</span>
-                </div>
+
+
+
+          </div>
+
+
+          <!-- Column 2 --------------------------------->
+          <div class="col-md-4">
+
+
+            <div class="card">
+              <img class="card-img-top" src="/resources/images/fvtcwebscraper.PNG" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">FVTC Web Scraper</h4>
+                <p class="card-text">This is a web scraper that creates a JSON file of the clusters, programs and courses at Fox Valley Technical College. The output can be seen by clicking "View Results" and the code can be seen in the github repo linked below as well.</p>
+                <a href="/programming/fvtcwebscraper/clusterInfo.json" class="btn btn-primary">View Results</a> <a href="https://github.com/B-Lemke/FVTCWebScraper" class="btn btn-primary ml-2">View Github Repo</a>
+                <br />
+                <span class="badge badge-pill badge-python">Python</span><span class="badge badge-pill badge-bs4">BeautifulSoup4</span>
+              </div>
+            </div>
+
+
+            <div class="card">
+              <img class="card-img-top" src="/resources/images/officeQuotes.PNG" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Office Quote Daily Emailer</h4>
+
+                <p class="card-text">This project started as a joke with some friends over how I needed more of the Office in my life. I decided to write a script that would send out an email to a list of my friends and I every morning with a quote from a random episode of the office. It is written in Python and uses an API filled with quotes from every season of the OFfice. This script currently runs every day off of a Raspberry Pi at home on a Cron Job and is a nice surprise for all of my friends and I as we get into work!</p>
+                <a href="https://github.com/B-Lemke/DailyOfficeQuoteEmailer" class="btn btn-primary">View Github Repo</a>
+                <br />
+                <span class="badge badge-pill badge-python">Python</span>
+              </div>
+            </div>
+
+
+            <div class="card">
+              <img class="card-img-top" src="/resources/images/colorauto.PNG" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Color Automaton</h4>
+                <p class="card-text">Inspired by Conway's Game of Life, I created a cellular automaton that calculates a weighted average of the color for each pixel each frame. It allows the user to pick a brush size and color and "paint" into the canvas as well. This project shows that I can use JavaScript to solve creative solutions, adapt code as necessary, take input from HTML5 controls, manipulate color data, and expand upon the logical concepts of others using JavaScript. </p>
+                <a href="/programming/colorauto/color.html" class="btn btn-primary">View Project</a>
+                <br />
+
+                <span class="badge badge-pill badge-javascript">JavaScript</span><span class="badge badge-pill badge-p5js">P5.JS</span>
               </div>
             </div>
           </div>
 
-          <div class="row mt-2">
-            <div class="col-md-4">
-              <div class="card">
-                <img class="card-img-top" src="/resources/images/nasa.png" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">Nasa Art Project</h4>
 
-                  <p class="card-text">  In an effort to learn how to use APIs, I decided to used Nasa's picture of the day API. I use the API to grab a random picture from their database and perform a 'fuzzy' visual effect on it. This project shows that I can make a call to an API, use an API key, parse the JSON that I recieve back from an API call, manipulate images, and place data in the DOM. <span class="font-weight-bold text-secondary">This project is currently not working properly because of a CORS header issue.</span> If you wish to view it, you must download an extension for your browser to allow resources to be shared across domains regardless of headers. <a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf/related?hl=en">Here</a> is the one I use for chrome.</p>
-                  <a href="/programming/nasa/nasa.html" class="btn btn-primary">View Project</a>
-                  <br />
-                  <span class="badge badge-pill badge-secondary">JavaScript</span><span class="badge badge-pill badge-warning">P5.JS</span><span class="badge badge-pill badge-dark">Partially Broken</span>
-                </div>
+
+          <!-- Column 3 ---------------------------------------->
+          <div class="col-md-4">
+
+
+            <div class="card">
+              <img class="card-img-top" src="/resources/images/fractaltree.PNG" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Breezy Day for Fractal Trees</h4>
+                <p class="card-text">This is a visualization of a mathematical concept that hass always interested me: Fractals! This fractal tree visualiztion is an example of recursion in javascript. It uses inputs from HTML sliders, calculates mathematic variables, synthesizes basic wind sounds out of noise using a Low Frequency Oscillator, shows use of recursion to produce a mathematically complex result. </p>
+                <a href="/programming/trees/tree.html" class="btn btn-primary">View Project</a>
+                <br />
+                <span class="badge badge-pill badge-javascript">JavaScript</span><span class="badge badge-pill badge-p5js">P5.JS</span>
               </div>
             </div>
 
-            <div class="col-md-4">
-              <div class="card">
-                <img class="card-img-top" src="/resources/images/clappingmusic.PNG" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">Clapping Music</h4>
-                  <p class="card-text">Steve Reich composed Clapping Music in 1972. The piece is written for two performers to clap and to go in and out of "phase" with eachother. This javascript project created using the ToneJS framework recreates the piece using JavaScript. It also features some beautiful emojis, because who doesn't love emojis?</p>
-                  <a href="/programming/clappingMusic/index.html" class="btn btn-primary">View Project</a>
-                  <br />
-                  <span class="badge badge-pill badge-secondary">JavaScript</span><span class="badge badge-pill badge-primary">ToneJS</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card">
-                <img class="card-img-top" src="/resources/images/colorauto.PNG" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">Color Automaton</h4>
-                  <p class="card-text">Inspired by Conway's Game of Life, I created a cellular automaton that calculates a weighted average of the color for each pixel each frame. It allows the user to pick a brush size and color and "paint" into the canvas as well. This project shows that I can use JavaScript to solve creative solutions, adapt code as necessary, take input from HTML5 controls, manipulate color data, and expand upon the logical concepts of others using JavaScript. </p>
-                  <a href="/programming/colorauto/color.html" class="btn btn-primary">View Project</a>
-                  <br />
-
-                  <span class="badge badge-pill badge-secondary">JavaScript</span><span class="badge badge-pill badge-warning">P5.JS</span>
-                </div>
+            <div class="card">
+              <img class="card-img-top" src="/resources/images/overwatchapp.png" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Overwatch Random Hero Picker</h4>
+                <p class="card-text">Overwatch is a videogame made by Blizzard Entertainment. Playing the game with friends is a common way for me to enjoy my time, and while it can be fun to play a certain character until you're really good at them, sometimes you just want a random character to be picked for you. There is no built-in way for this to be achieved in game, so I built a Xamarin Forms application as part of my intro to mobile development class that allows the user to select a random character. In addition, you can filter out characters you don't want to play and save filters to switch between them. </p>
+                <a href="https://github.com/B-Lemke/OverwatchRandomHeroPickerApp" class="btn btn-primary">View Github Repo</a>
+                <br />
+                <span class="badge badge-pill badge-csharp">C#</span><span class="badge badge-pill badge-mobile">Mobile</span><span class="badge badge-pill badge-xamarin">Xamarin</span>
               </div>
             </div>
           </div>
+
 
         </div>
         <div class="col-md-1"></div>
@@ -126,9 +157,9 @@
 
 
     <footer>
-        <!--Angular Include finds the HTML from the footer.html file and inserts it in this div tag -->
-         <div ng-include src="'footer.html'"></div>
+      <!--Angular Include finds the HTML from the footer.html file and inserts it in this div tag -->
+      <div ng-include src="'footer.html'"></div>
     </footer>
 
   </body>
-</html>
+  </html>
