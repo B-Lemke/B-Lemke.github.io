@@ -1,0 +1,13 @@
+#clapRow1Disp, #clapRow2Disp{
+  font-size: 5vw;
+
+}
+
+#measureCountDisp{
+  margin-top: 20px;
+  font-size: 3vw;
+}
+
+body{
+  background-color: black;
+}
