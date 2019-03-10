@@ -57,8 +57,8 @@ background: linear-gradient(90deg, #191919, #ff785a);
 }
 
 .active{
-  background: #ff785a;
-  padding-bottom: 5px;
+  background: #ff785a !important;
+  padding-bottom: 5px !important;
 }
 
 .bg-texture {
@@ -69,4 +69,12 @@ background: linear-gradient(90deg, #191919, #ff785a);
 .nav-link{
   margin: 0px 10px;
   min-width: 200px;
+}
+
+@media (max-width: 768px) {
+
+  [class*="col-"] {
+      margin-bottom: 15px;
+  }
+
 }
