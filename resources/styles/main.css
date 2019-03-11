@@ -50,6 +50,7 @@ footer p {
 
 .image-scale{
   width: 75%;
+  height: 100%;
 }
 
 .header-bg{
@@ -79,9 +80,15 @@ background: linear-gradient(90deg, #191919, #ff785a);
 
 }
 
+.blockquote {
+  margin: 30px !important;
+}
+
 .card {
   margin-bottom: 40px !important;
   box-shadow: 2px 2px 10px #191919;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .badge-javascript{
