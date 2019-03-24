@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Broderick Lemke</title>
   <!-- Bootstrap CSS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <!--Angular JS and UI Bootstrap. UI Bootstrap makes angular and bootstrap get along nicely -->
   <script src="resources/scripts/angular.min.js"></script>
   <script src="resources/scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
   <script src="resources/scripts/activeController.js"></script>
+  <script src="resources/scripts/scrollAnimation.js"></script>
 
   <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico">
 
@@ -28,70 +29,78 @@
     <div ng-include src="'header.html'"></div>
   </header>
 
-<div  id="top-blurb">
-  <div class="container">
-    <!-- End navigation bar -->
-    <!-- Main image and welcome box with name and title-->
-    <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <img src="resources/images/headshot.jpg" alt="Picture of Broderick Lemke"
-        class="rounded-circle pulse img-fluid"></img>
-      </div>
-      <div class="col-md-4"></div>
-    </div>
-
-    <div class="row mt-5">
-      <div class="col-md-2"></div>
-      <div class="jumbotron bg-dark text-center rounded dark-glow col-md-8 container-fluid">
-        <div class="row">
-          <h1 class="text-primary display-3 font-weight-bold col-12">Broderick Lemke;</h1>
-        </div>
-        <div class="row">
-        <h2 class="text-secondary display-5 font-weight-bold font-italic col-12">21st Century Creative</h2>
-      </div>
+  <div  id="top-blurb">
+    <div class="container">
+      <!-- End navigation bar -->
+      <!-- Main image and welcome box with name and title-->
       <div class="row">
-        <p class="text-info display-6  col-12"> <em> A Jack of all trades is a master of none, but
-          oftentimes better than a master of one. </em> </p>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="resources/images/headshot.jpg" alt="Picture of Broderick Lemke"
+          class="rounded-circle pulse img-fluid"></img>
         </div>
-        </div>
+        <div class="col-md-4"></div>
+      </div>
+
+      <div class="row mt-5">
         <div class="col-md-2"></div>
+        <div class="jumbotron bg-dark text-center rounded dark-glow col-md-8 container-fluid">
+          <div class="row">
+            <h1 class="text-primary display-3 font-weight-bold col-12">Broderick Lemke;</h1>
+          </div>
+          <div class="row">
+            <h2 class="text-secondary display-5 font-weight-bold font-italic col-12">21st Century Creative</h2>
+          </div>
+          <div class="row">
+            <p class="text-info display-6  col-12"> <em> A Jack of all trades is a master of none, but
+              oftentimes better than a master of one. </em> </p>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
       </div>
     </div>
-  </div>
     <!-- This is all below the main top-blurb of the homepage. -->
 
 
     <section class="container-fluid mt-5" >
-      <div class="row">
+      <div class="row ">
         <div class="col-md-1"></div>
-          <div class="col-md-10 bg-light dark-glow container-fluid">
-            <div class="row bg-sucess">
-                <div class="col-md-4 text-center">
-                  <img src="resources/images/lime.png" class="mt-2 mb-2 image-scale"/>
-                </div>
-
-                <div class="col-md-8 container">
-                  <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10  bg-light mt-4 p-2 lead">
-                      <p><span class="font-weight-bold font-italic">Broderick Lemke</span> is a native of the Fox Valley region of North East Wisconsin. He has a Bachelor's degree in Music Liberal Arts, and has a passion for anything related to art. He has had musical works performed by several local ensembles, and continues to create new works in both the visual and musical arts. As his most recent challenge, he has chosen to pursue a Software Development Associate's degree from Fox Valley Technical College. He is looking forward to harnessing his creativity in new ways and creating digital content that explores relationships between technology and the arts. </p>
-                    </div>
-                    <div class="col-md-1"></div>
-                  </div>
-                </div>
+        <div class="col-md-10 bg-light dark-glow container-fluid">
+          <div class="row bg-sucess mt-5 mb-5 fadeInAnimation">
+            <div class="col-md-4 text-center">
+              <img src="resources/images/lime.png"  height="100"/>
             </div>
-            <div class="row bg-light">
-
+            <div class="col-md-4 d-none d-md-block text-center">
+              <img src="resources/images/lime.png" height="100"/>
             </div>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <div class="row bg-primary">
-              <blockquote class="blockquote text-right">
-                <p class="mb-0 text-dark font-italic">I have come gradually to understand that the liberal-arts cliché about ‘teaching you how to think’ is actually shorthand for a much deeper, more serious idea: ‘Learning how to think’ really means learning how to exercise some control over how and what you think. It means being conscious and aware enough to choose what you pay attention to and to choose how you construct meaning from experience.</p>
-                <footer class="blockquote-footer">David Foster Wallace in <cite title="Source Title">This is Water</cite></footer>
-              </blockquote>
+            <div class="col-md-4 d-none d-md-block text-center">
+              <img src="resources/images/lime.png" height="100"/>
             </div>
           </div>
+
+
+          <div class="row fadeInAnimation">
+            <div class="col-md-1"></div>
+            <div class="col-md-10  bg-light mt-4 p-2 lead">
+              <p><span class="font-weight-bold font-italic ">Broderick Lemke</span> is a native of the Fox Valley region of North East Wisconsin. He has a Bachelor's degree in Music Liberal Arts, and has a passion for anything related to art. He has had musical works performed by several local ensembles, and continues to create new works in both the visual and musical arts. As his most recent challenge, he has chosen to pursue a Software Development Associate's degree from Fox Valley Technical College. He is looking forward to harnessing his creativity in new ways and creating digital content that explores relationships between technology and the arts. </p>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+
+          <hr />
+
+          <div class="row bg-light">
+
+          </div>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <div class="row bg-primary fadeInAnimation">
+            <blockquote class="blockquote text-right">
+              <p class="mb-0 text-dark font-italic">I have come gradually to understand that the liberal-arts cliché about ‘teaching you how to think’ is actually shorthand for a much deeper, more serious idea: ‘Learning how to think’ really means learning how to exercise some control over how and what you think. It means being conscious and aware enough to choose what you pay attention to and to choose how you construct meaning from experience.</p>
+              <footer class="blockquote-footer">David Foster Wallace in <cite title="Source Title">This is Water</cite></footer>
+            </blockquote>
+          </div>
+        </div>
         <div class="col-md-1"></div>
 
       </div>

@@ -15,3 +15,12 @@
 body {
   background-image: url("../images/backgroundtile2.jpg");
 }
+
+
+.accordianHolder {
+   border: 1px solid #d8d7d4;
+}
+
+.accordion {
+  margin-bottom: 20px;
+}
