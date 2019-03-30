@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>8 Queens </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+      tr td
+      {
+          height: 102px;
+          width: 102px;
+          background-color: #fff;
+      }
+
+      tr:nth-child(even) td:nth-child(odd),
+      tr:nth-child(odd) td:nth-child(even)
+      {
+          background-color: #ccc;
+      }
+
+
+    </style>
+
+  </head>
+
+  <body>
+    <table id="chessBoard">
+
+    </table>
+
+    <!--
+    <p>Number of queens</p>
+    <select onchange="resetBoard(this)">
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+    </select>
+  -->
+    <script src="8queens.js"></script>
+
+  </body>
+</html>
