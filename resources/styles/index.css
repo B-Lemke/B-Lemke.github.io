@@ -4,6 +4,47 @@ body{
 }
 
 
+@media (min-width:801px) {
+
+  /*pulsing behind the picture and welcome slide*/
+
+  .pulse {
+    box-shadow: 0 0 0 #851800;
+    animation: pulse 2.5s infinite;
+  }
+
+  @-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 100px 0 #ff785a;
+    }
+    50% {
+        -webkit-box-shadow: 0 0 300px 100px #ffd25a;
+    }
+    100% {
+        -webkit-box-shadow: 0 0 100px 0 #ff785a;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 100px 0 #ff785a;
+      box-shadow: 0 0 100px 0 #ff785a;
+    }
+    50% {
+        -moz-box-shadow: 0 0 300px 100px #ffd25a;
+        box-shadow: 0 0 300px 100px #ffd25a;
+    }
+    100% {
+        -moz-box-shadow: 0 0 100px 0 #ff785a;
+        box-shadow: 0 0 100px 0 #ff785a;
+    }
+  }
+
+}
+
+.fas{
+  margin: auto 10px;
+}
 
 
 #top-blurb {
@@ -12,38 +53,4 @@ body{
   background-image: url(../images/backgroundtile2.jpg);
   background-repeat: repeat;
   box-shadow: 0 0 300px 10px #FF5B40;
-}
-
-/*pulsing behind the picture and welcome slide*/
-
-.pulse {
-  box-shadow: 0 0 0 #851800;
-  animation: pulse 2.5s infinite;
-}
-
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-box-shadow: 0 0 100px 0 #ff785a;
-  }
-  50% {
-      -webkit-box-shadow: 0 0 300px 100px #ffd25a;
-  }
-  100% {
-      -webkit-box-shadow: 0 0 100px 0 #ff785a;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    -moz-box-shadow: 0 0 100px 0 #ff785a;
-    box-shadow: 0 0 100px 0 #ff785a;
-  }
-  50% {
-      -moz-box-shadow: 0 0 300px 100px #ffd25a;
-      box-shadow: 0 0 300px 100px #ffd25a;
-  }
-  100% {
-      -moz-box-shadow: 0 0 100px 0 #ff785a;
-      box-shadow: 0 0 100px 0 #ff785a;
-  }
 }

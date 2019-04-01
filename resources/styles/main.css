@@ -13,6 +13,19 @@ body {
   padding-bottom: 50px;
 }
 
+#aboutMeCloud{
+  margin: 20px auto;
+  padding: 20px;
+  background: #191919;
+  height: 400px;
+  width: 95%;
+  box-shadow: 0 0 10px 10px #191919
+}
+
+#whoAmIHeader{
+  font-size: 4rem;
+}
+
 /*Make an image round CSS */
 .round-image {
     border-radius: 50%;
@@ -84,7 +97,7 @@ background: linear-gradient(90deg, #191919, #ff785a);
   margin: 30px !important;
 }
 
-.card {
+.programcard {
   margin-bottom: 40px !important;
   box-shadow: 2px 2px 10px #191919;
   margin-left: 10px;
@@ -131,7 +144,7 @@ background: linear-gradient(90deg, #191919, #ff785a);
 }
 
 
-.fadeInAnimation, .fadeInAnimationFast
+.fadeInAnimation, .fadeInAnimationFast, .fadeInAnimationVisible
 {
     opacity:0;
 }
