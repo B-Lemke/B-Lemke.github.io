@@ -148,3 +148,7 @@ background: linear-gradient(90deg, #191919, #ff785a);
 {
     opacity:0;
 }
+
+.btn-link{
+  color: #191919 !important;
+}

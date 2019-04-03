@@ -14,7 +14,7 @@
      <script src="resources/scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script src="resources/scripts/activeController.js"></script>
     <script src="resources/scripts/jqcloud.js"></script>
-
+    <script src="resources/scripts/modalGallery.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon.ico">
@@ -35,13 +35,223 @@
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10 bg-light dark-glow rounded">
-          <h1 class="text-center m-3" id="whoAmIHeader"><strong>Who am I?</strong></h1>
+          <h1 class="text-center mt-3 mb-4" id="whoAmIHeader"><strong>Who am I?</strong></h1>
 
           <div id="aboutMeCloud"></div>
-          <p> Content content content</p>
-          <p> Content content content</p>
-          <br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <h3 class="mt-5 font-weight-light text-center text-lg-left">Where I came from...</h3>
+          <p > Oh boy. This is not where I thought I would be even three years ago. Working in the tech field was a dream of mine when I was young and helping my mother with her sotware and web development degree, but I chose a different career path during my last few years of high school. I was interested in music and being able to express myself creatively. My highschool had allowed me to explore that openly through music, and I decided that pursuing a career in Music Education was the right choice for me. During my last semester of my music ed degree, I changed plans. Normally I'm not someone who acts on impulse for big life decisions, but things weren't feeling right. I was craving logic and problem solving that wasn't being presented to me, and teams that worked together which isn't a common structure that exists in the educational system. I had been thinking about my childhood web development, along with the computer programming course work that I completed during my undergrad and decided to take the dive and change career paths. I was going to be a software developer.</p>
+          <h3 class="font-weight-light text-center text-lg-left">Where I am...</h3>
+          <p>That decision was one of the best decisions I've made. Things have been clicking for me academically and professionally since I made the switch. My experience at the four-year college taught me how to seek out additional opportunities and apply myself in ways that my peers don't always take advantage of. As a result, I've grown close with my instructors and gotten to work closely with them in the classroom, at my workplace, and in our professional organization. I keep mentioning my work. I LOVE MY JOB. I work as a Virtual Reality develper. Who is in their early twenties and gets to say they get paid to develop VR applications? I've spent my time in our department filling a variety of roles from content and multimedia development, to graphic design, to developing team-wide document for internal procedures, and now I have been working with my mentor to produce Virtual Reality applications. We have worked through several projects and are looking forward to relasing some of the apps within the next couple of months! It's been a pleasure getting to work with a group of people that really care about me and have helped me grow as a person and a programmer.</p>
+          <h3 class="font-weight-light text-center text-lg-left">Where I'm going..</h3>
+          <p>That just leaves where I'm going next. Unfortunately as much as I and my coworkers would like, I can't stay in my internship forever. We joke that we're all in denial and I should just delay my documentation so I can't leave because I'm one of the only people on my team that knows the framework I've been using, but all good things must come to an end. I'm looking to move! I want to get out of Wisconsin is the goal, but if I find a cool job I'm willing to stay in the state. What classifies a cool job? I'm looking for the following things out of an employer:</p>
+          <ul>
+            <li>Using new and exciting frameworks or technologies</li>
+            <li>Ability to grow within the company</li>
+            <li>Brand recognizability (Oh sweet, you work for THEM?)</li>
+            <li>Educational opportunities to continue learning</li>
+            <li>LGBTQ+ friendly culture</li>
+            <li>Money... I mean, it has to be said?</li>
+            <li>Willing to take a chance on me</li>
+          </ul>
+
+<hr>
+
+          <h4 class="font-weight-light text-center text-lg-left">The promised images of Toby (Aka Torbo and Toblerone)</h4>
+
+
+
+          <div class="row">
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby_thumbnail.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby1.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby1_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby2.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby2_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby3.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby3_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <!-- Row 2 -->
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby4.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby4_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby5.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby5_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby6.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby6_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby7.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby7_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <!-- Row 3-->
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby9.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby9_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby10.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby10_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby12.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby12_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby13.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby13_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <!-- Row 4-->
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby16.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby16_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby17.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby17_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby18.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby18_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Toby Being a Dork"
+                   data-image="resources/images/toby/toby19.jpg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="resources/images/toby/thumbs/toby19_thumb.jpg"
+                         alt="Toby"
+                         height="300">
+                </a>
+            </div>
+
+      </div>
+
+
+              <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h4 class="modal-title" id="image-gallery-title"></h4>
+                              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                              </button>
+                          </div>
+                          <div class="modal-body text-center">
+                              <img id="image-gallery-image" class="image-larger col-md-12" src="">
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary float-left" id="show-previous-image"><i class="fa fa-arrow-left"></i>
+                              </button>
+
+                              <button type="button" id="show-next-image" class="btn btn-secondary float-right"><i class="fa fa-arrow-right"></i>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
         </div>
         <div class="col-md-1"></div>
       </div>

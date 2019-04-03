@@ -16,3 +16,24 @@ body {
 strong{
   color: #ff785a;
 }
+
+.btn:focus, .btn:active, button:focus, button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#image-gallery .modal-footer{
+  display: block;
+}
+
+.thumb{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+
+.image-larger{
+  max-height: 80vh !important;
+  width: auto;
+  margin: auto;
+}
