@@ -49,7 +49,7 @@ function draw() {
   }
 
 
-  console.log(balls.length);
+  //console.log(balls.length);
 
   //when out of balls
   if (balls.length == 0 && notDoubled){
