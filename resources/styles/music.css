@@ -24,3 +24,7 @@ body {
 .accordion {
   margin-bottom: 20px;
 }
+
+.btn{
+white-space:normal !important; word-wrap: break-word; word-break: normal;
+}

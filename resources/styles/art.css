@@ -13,8 +13,18 @@
 }
 
 
-.image-larger{
-  max-height: 80vh !important;
-  width: auto;
-  margin: auto;
+@media (min-width:801px) {
+  .image-larger{
+    max-height: 80vh !important;
+    width: auto;
+    margin: auto;
+  }
+}
+
+@media (max-width: 800px) {
+
+  .image-larder{
+    width:auto;
+  }
+
 }
