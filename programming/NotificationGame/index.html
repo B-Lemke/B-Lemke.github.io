@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Broderick Lemke, 2019 -->
+  <head>
+    <meta charset="utf-8">
+    <title>Notification Game</title>
+    <script src="alertify.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/alertify.css">
+<style>
+.buttonStyle {
+color: #494949 !important;
+text-transform: uppercase;
+background: #ffffff;
+padding: 20px;
+border: 4px solid #494949 !important;
+border-radius: 6px;
+display: inline-block;
+margin: 20px;
+}
+
+.buttonStyle:hover {
+color: #ffffff !important;
+background: #f6b93b;
+border-color: #f6b93b !important;
+transition: all 0.4s ease 0s;
+}
+</style>
+  </head>
+  <body>
+    <!-- page content -->
+      <p id="score"></p>
+      <p id="pointsPer"></p>
+      <p id="chance"></p>
+      <p id="timeBetween"></p>
+      <p id="timeBeforeDiss"></p>
+
+<div class="button_cont" align="center">
+  <a class="buttonStyle" href="#" id="IncreasePoints">Increase Points Per Notification</a> <br/>
+  <a class="buttonStyle" href="#" id="IncreaseChance">Increase Chance of Notification</a><br/>
+  <a class="buttonStyle" href="#" id="DecreaseTimeBetweenNotif">Decrease Time Between Notification Attempts</a><br/>
+  <a class="buttonStyle" href="#" id="DecreaseTimeAutoDis">Decrease Time Before Auto-Dissapearing</a><br/>
+</div>
+
+
+
+
+    <script>
+        var startTime = Date.now();
+        var alertedToWin = false;
+
+        var score = 0;
+
+        var timeBeforeDissapearing = 100;
+        var scoreIncrease = 1;
+
+        var timeBetweenNotificationChance = 1000;
+        var notificationChance = 0.1;
+
+        var gameRunning = true;
+
+
+        var costForPoints = 10;
+        var costForChance = 10;
+        var costForNotifAttempts = 10;
+        var costForAutoDiss = 10;
+
+        var winningScore = 10000;
+
+
+        //Funciton that controls how often popups are fired off and handles all timing
+        function popupFirer(){
+          setTimeout( function(){
+            var chance = Math.random();
+
+          console.log(chance);
+          if(chance <= notificationChance){
+            popup();
+          }
+
+          popupFirer();}, timeBetweenNotificationChance)
+
+        }
+
+        //Actual popup funciton
+      function popup(){
+        alertify.notify('Dismiss me for ' + scoreIncrease + ' points.', 'success', timeBeforeDissapearing, function(){
+          score += scoreIncrease;
+          if(score >= winningScore && !alertedToWin){
+            alertify.alert('Victory!', "You won in " + ((Date.now() - startTime) / 1000) + " seconds!" , function(){ alertify.success('You already won, stop.'); });
+            alertedToWin = true;
+          }
+          updateLabels();}
+
+        );
+      }
+
+      //Button handlers
+      $('#IncreasePoints').click(function () {
+          if(score >= costForPoints){
+            score -= costForPoints;
+            scoreIncrease *= 2;
+            costForPoints *= 7;
+            updateLabels();
+          }else {
+            alertify.notify('Insufficient Funds.', 'error', 4, null);
+            }
+      });
+
+      $('#IncreaseChance').click(function () {
+          if(score >= costForChance && notificationChance < 1){
+            score -= costForChance;
+            notificationChance += .05;
+            costForChance *= 5;
+            updateLabels();
+          } else if (notificationChance >= 1){
+            $("#IncreaseChance").hide();
+          } else {
+            alertify.notify('Insufficient Funds.', 'error', 4, null);
+            }
+      });
+
+      $('#DecreaseTimeBetweenNotif').click(function () {
+          if(score >= costForNotifAttempts && timeBetweenNotificationChance >= 100){
+            score -= costForNotifAttempts;
+            timeBetweenNotificationChance -= 100;
+            costForNotifAttempts *= 5;
+            updateLabels();
+          } else if (timeBetweenNotificationChance < 100){
+            $("#DecreaseTimeBetweenNotif").hide();
+          } else {
+            alertify.notify('Insufficient Funds.', 'error', 4, null);
+            }
+      });
+
+      $('#DecreaseTimeAutoDis').click(function () {
+          if(score >= costForAutoDiss && timeBeforeDissapearing >= 5){
+            score -= costForAutoDiss;
+            timeBeforeDissapearing -= 5;
+            costForAutoDiss *= 2;
+            updateLabels();
+          } else if (timeBeforeDissapearing < 5){
+            $("#DecreaseTimeAutoDis").hide();
+          } else {
+            alertify.notify('Insufficient Funds.', 'error', 4, null);
+            }
+      });
+
+      //Function to update display labels and buttons
+      function updateLabels(){
+          $("#score").text("Score: " + score);
+          $("#pointsPer").text("Points Per Notification: " + scoreIncrease + " point");
+          $("#chance").text("Chance of notification: " + notificationChance * 100 + "%");
+          $("#timeBetween").text("Time between notification chances: " + timeBetweenNotificationChance * .001 + "s");
+          $("#timeBeforeDiss").text("Time Before Auto Dissapear: " + timeBeforeDissapearing + "s");
+
+          $("#IncreasePoints").text("Increase Points Per Notification - " + costForPoints);
+          $("#IncreaseChance").text("Increase Chance of Notification - " + costForChance);
+          $("#DecreaseTimeBetweenNotif").text("Decrease Time Between Notification Attempts - " + costForNotifAttempts);
+          $("#DecreaseTimeAutoDis").text("Decrease Time Before Auto-Dissapearing - " + costForAutoDiss);
+      }
+
+      //Start the game
+      updateLabels();
+      popupFirer();
+    </script>
+  </body>
+</html>
