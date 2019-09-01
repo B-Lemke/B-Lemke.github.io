@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>De Stijl</title>
+
+    <style>
+      body, html{
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+        .grid-container {
+          width: 100%;
+          height: 100%;
+          display: grid;
+        }
+
+        .grid-container div {
+          box-sizing: border-box;
+          border: 4px solid black;
+        }
+
+        .grid-container div[class|="red"]{
+          background-color: red;
+        }
+
+        .grid-container div[class|="blue"]{
+          background-color: blue;
+        }
+
+        .grid-container div[class|="yellow"]{
+          background-color: yellow;
+        }
+
+
+        .grid-container div[class|="white"]{
+          background-color: white;
+        }
+    </style>
+    <script>
+
+      class Color {
+        constructor(name){
+          this.name = name;
+          this.count = 0;
+        }
+      }
+
+      //Generate the four colors;
+      var white = new Color("white");
+      var colors = [white, white, white, white, new Color("blue"), new Color("red"), new Color("yellow")];
+
+      //Generate the layout:
+      var numberOfRows = 15;
+      var numberOfCols = 15;
+      //Developer note: I messed something up with the numberOfRows and the numberOfCols... They HAVE to be the same number. Why?
+      var maxRowSpan = 3;
+      var maxColSpan = 3;
+
+      var gridItemsToAdd = [];
+
+      var gridArray = new Array(numberOfRows);
+      for(var colFill = 0; colFill < numberOfCols; colFill++){
+        gridArray[colFill] = new Array(numberOfCols);
+      }
+
+      //Fill the array
+      for(var i = 0; i < numberOfRows; i++){
+        for(var j = 0; j < numberOfCols; j++){
+          //Make sure this spot is empty, or skip it
+          if(!gridArray[i][j]){
+
+          //Pick a color
+           var randomColor = colors[Math.floor(Math.random()*colors.length)];
+
+           var attemptedPlaceCount = 0;
+           var notPlaced = true;
+
+
+           while(attemptedPlaceCount < 1000 && notPlaced){
+             //Pick a column span and row span
+             var rowSpan = Math.floor(Math.random() * maxRowSpan) + 1;
+             var colSpan = Math.floor(Math.random() * maxColSpan) + 1;
+
+
+             //Check to see if the shap can fit in the space provided
+             //Check out of bounds
+             if(numberOfCols > j + colSpan -1 && numberOfRows > i + rowSpan - 1){
+                var canPlace = true;
+                //Make sure each space is empty
+
+                for(var checkRows = i; checkRows < i + rowSpan; checkRows++){
+                  for(var checkCols = j; checkCols < j + colSpan; checkCols++){
+                    //Double check this spot is in the array
+                    if(checkRows < numberOfRows && checkCols < numberOfCols){
+                    //Check if spot is empty;
+                    if(typeof gridArray[checkRows][checkCols] == "string"){
+                      //There was a value here again, next iteration of the while loops
+                      attemptedPlaceCount++;
+                      canPlace = false;
+                      checkRows = i + rowSpan;
+                      continue;
+                    }
+                  }
+                  }
+                }
+                if(canPlace){
+
+                //Success! Place the color in the spot
+                notPlaced = false;
+
+                for(var placingRows = i; placingRows < i + rowSpan; placingRows++){
+                  for(var placingCols = j; placingCols < j + colSpan; placingCols++){
+                    gridArray[placingRows][placingCols] =  randomColor.name + "-" + randomColor.count;
+
+                  }
+                }
+                gridItemsToAdd.push(randomColor.name + "-" + randomColor.count);
+                randomColor.count++;
+              }
+             }
+              attemptedPlaceCount++;
+           }
+           //We still didn't place anything this iteration. Stick in a single white space
+           if(notPlaced){
+             gridArray[i][j] = colors[0].name + "-" + colors[0].count;
+             gridItemsToAdd.push(randomColor.name + "-" + randomColor.count);
+             colors[0].count++;
+          }
+          }
+        }
+      }
+
+      //Get the current stylesheet ---------------------------------------
+
+      //Create row and col sizes
+      var maxCoolAndRowSize = 10;
+      var rowSizes = "";
+      for(var rowSizeCounter = 0; rowSizeCounter < numberOfRows; rowSizeCounter++){
+        rowSizes += "minmax(10px, " + (Math.floor(Math.random() * maxCoolAndRowSize) + 1) + "fr) ";
+      }
+      var colSizes = "";
+      for(var colSizeCounter = 0; colSizeCounter < numberOfCols; colSizeCounter++){
+        colSizes += "minmax(10px, " + (Math.floor(Math.random() * maxCoolAndRowSize) + 1) + "fr) ";
+      }
+
+      var styleSheet = document.styleSheets[0];
+      styleSheet.addRule(".grid-container", "grid-template-rows: " + rowSizes, 0);
+      styleSheet.addRule(".grid-container", "grid-template-columns: " + colSizes, 0);
+      styleSheet.addRule(".grid-container .red-1", "grid-area: red-1", 0);
+
+
+      // Create Grid Areas
+      var outputMatrix = [];
+      for(var gridArrayItem = 0; gridArrayItem < gridArray.length; gridArrayItem++){
+        outputMatrix[gridArrayItem] = gridArray[gridArrayItem].join(' ');
+      }
+
+
+      outputString = "";
+      for(var itemInOutputMatrix = 0; itemInOutputMatrix < outputMatrix.length; itemInOutputMatrix++){
+        outputString += "\"" + outputMatrix[itemInOutputMatrix] + "\" ";
+      }
+
+      styleSheet.addRule(".grid-container", "grid-template-areas: " + outputString, 0);
+
+
+      //Create a div for each gridItemToAdd
+    window.onload = function() {
+      var gridContainer = document.getElementById('de-stijl');
+
+      for(var newDiv = 0; newDiv < gridItemsToAdd.length; newDiv++){
+        var div = document.createElement('div')
+        div.classList.add(gridItemsToAdd[newDiv]);
+        gridContainer.appendChild(div);
+              styleSheet.addRule(".grid-container ." + gridItemsToAdd[newDiv] , "grid-area: " + gridItemsToAdd[newDiv], 0);
+      }
+    }
+
+   </script>
+  </head>
+  <body>
+    <div class="grid-container" id="de-stijl">
+      <div class="red-1">
+      </div>
+      <div class="white-1">
+      </div>
+      <div class="blue-1">
+      </div>
+      <div class="white-2">
+      </div>
+      <div class="white-3">
+      </div>
+      <div class="red-2">
+      </div>
+      <div class="yellow-1">
+      </div>
+    </div>
+  </body>
+</html>
