@@ -52,9 +52,11 @@
       var white = new Color("white");
       var colors = [white, white, white, white, new Color("blue"), new Color("red"), new Color("yellow")];
 
+      var randomNumberOfGrid = Math.floor(Math.random() * 20) + 5;
+
       //Generate the layout:
-      var numberOfRows = 15;
-      var numberOfCols = 15;
+      var numberOfRows = randomNumberOfGrid;
+      var numberOfCols = randomNumberOfGrid;
       //Developer note: I messed something up with the numberOfRows and the numberOfCols... They HAVE to be the same number. Why?
       var maxRowSpan = 3;
       var maxColSpan = 3;
