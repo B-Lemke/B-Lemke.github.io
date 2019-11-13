@@ -100,8 +100,6 @@ background: linear-gradient(90deg, #191919, #ff785a);
 .programcard {
   margin-bottom: 40px !important;
   box-shadow: 2px 2px 10px #191919;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .badge-javascript{
@@ -119,6 +117,11 @@ background: linear-gradient(90deg, #191919, #ff785a);
 
 .badge-python{
   background: #DAF7A6;
+}
+
+.badge-css{
+  background: rebeccapurple;
+  color: white;
 }
 
 .badge-bs4{
