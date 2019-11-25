@@ -1,0 +1,373 @@
+/* css Zen Garden default style v1.02 */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+
+/* FONTS */
+@font-face {
+	font-family: 'Nodesto';
+	src: url('Nodesto\ Caps\ Condensed\ Bold.otf'); /* IE9 Compat Modes */	
+  }
+
+
+  /* Body Text */
+  @font-face {
+	font-family: 'Scaly Sans';
+	src: url('Scaly\ Sans.otf'); /* IE9 Compat Modes */	
+  }
+
+    /* Headers */
+  @font-face {
+	font-family: 'Mr Eaves';
+	src: url('Mr\ Eaves\ Small\ Caps.otf');	
+  }
+
+  /* Table headers */
+  @font-face {
+	font-family: 'Bookinsanity';
+	src: url('Bookinsanity.otf');	
+  }
+
+  @font-face {
+	font-family: 'Bookinsanity';
+	src: url('Bookinsanity\ Bold.otf');
+	font-weight: bold;	
+	
+  }
+
+  	/* Table Body */
+  @font-face {
+	font-family: 'Zatanna Misdirection';
+	src: url('Zatanna\ Misdirection.otf');	
+  }
+
+/* Your images should be linked as if the CSS file sits in the same folder as the images. ie. no paths. */
+
+/* HEADER STYLES */
+header {
+	width: 100vw;
+	text-align: center;
+	background: url("dragonImg.jpg");
+	background-size: cover;
+	height: 80vh;
+	font-family: "Nodesto", serif;
+	position: relative;
+	margin-left: calc(-50vw + 50%);
+	overflow: hidden;
+}
+
+header::before {
+	content: "D&D";
+	font-size: 6em;
+	position: absolute;
+	top: 2vw;
+	left: 0;
+	width: 100%;
+	color: #c21015;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+header h1 {
+	margin: 0;
+	padding: 5vw;
+	padding-top: 15vh;
+
+	color: #FFF;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: black;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	font-size: 5em;
+	text-transform: uppercase;
+}
+
+header h1::before {
+	content: "GUILDMASTERS' GUIDE TO ";
+	color: #FFF;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: black;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	width: 100%;
+	display: block;
+	word-break: break-word;
+}
+
+header h2 {
+	padding-left: 5vw;
+	margin-top: 10vh;
+	text-align: left;
+	font-size: 2vw;
+	color: #FFF;
+	background: url("paintbg.png");
+	background-size: cover;
+    width: 20vw;
+    height: 3vw;
+    padding: 1em;
+	text-transform: uppercase;
+}
+
+
+/* Text at bottom of header */
+header h2::after {
+	content: "CSS Content and Styles inspired by the world's greatest roleplaying game";
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	text-transform: uppercase;
+	position: absolute;
+	bottom: 1em;
+	font-size: 2rem;
+	width: 100%;
+	left: 0;
+	text-align: center;
+	display: inline-block;
+	padding: 0 5vw;
+	box-sizing: border-box;
+}
+
+
+
+/* Diamond under header title.
+ Position absolute and use left positioning to move to the center 
+ Removes it from the flow so it doesn't push down the beauty of css tagline
+Hide if not supported
+ */
+
+
+header h1::after {
+	content: "";
+	width: 20%;
+	left: 40%;
+	background: #930C10;
+	height: .5em;
+	display: block;
+	margin: 0px auto;
+	position: absolute;
+	clip-path: polygon(50% 30%, 100% 50%, 50% 70%, 0% 50%);
+}
+
+
+@supports not (clip-path: polygon(50% 30%, 100% 50%, 50% 70%, 0% 50%)) {
+	header h1::after {
+		display: none;
+	}
+}
+
+/* Header Responsive Design */
+
+@media only screen and (max-width: 1240px) {
+	header h2 {
+		margin-top: 10vh;
+		font-size: 3vw;
+		width: 30vw;
+		height: 3vw;
+	} 
+	header h1 {
+		font-size: 4.5em;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	header h2 {
+		font-size: 4vw;
+		width: 40%;
+		height: 4vw;
+		margin-top: 20vh;
+	}
+
+	header h1 {
+		font-size: 3em;
+		-webkit-text-stroke-width: 1px;
+	}
+
+	header h1::before {
+		-webkit-text-stroke-width: 1px;
+	}
+
+	header::before {
+		-webkit-text-stroke-width: 1px;
+		top: .75em;
+		font-size: 4em;
+	}
+}
+
+
+@media only screen and (max-width: 460px) {
+	header h2::after {
+		font-size: 1em;
+	}
+
+
+	header h2 {
+		font-size: 6vw;
+		width: 60%;
+		height: 10vw;
+		margin-top: 25vh;
+	}
+
+	header h1 {
+		font-size: 2.5em;
+		-webkit-text-stroke-width: 1px;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	header h1::after {
+		width: 40%;
+		left: 30%;
+	}
+}
+
+@media only screen and (max-width: 460px) {
+	header h1::after {
+		width: 60%;
+		left: 20%;
+		height: 1em;
+	}
+
+}
+
+
+	/* Change CSS to the word dragons in the explanation section */
+
+.explanation p:first-of-type abbr[title="Cascading Style Sheets"]:first-of-type:after {
+    content: " Dragons";
+    text-decoration: none;
+    display: inline-block;
+    margin-left: .3em;
+}
+.explanation p:first-of-type abbr[title="Cascading Style Sheets"]:first-of-type {
+    /* background: black; */
+    text-decoration: line-through;
+}
+
+
+
+/* Body background */
+body {
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+	background: url("bgtile.jpg");
+	font-family: "Scaly Sans", sans-serif;
+}
+
+.page-wrapper {
+	background: url("papertexture.png");
+}
+
+h3 {
+	font-family: "Mr Eaves";
+}
+
+/* Styling Links in tables at bottom of the page*/
+
+.sidebar {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0px auto;
+	padding: 1rem;
+	box-sizing: border-box;
+}
+
+.page-wrapper:not(header) {
+	max-width: 1200px;
+	margin: 0px auto;
+	padding: 0rem 1rem 1rem 1rem;
+}
+
+.main.supporting {
+	max-width: 1200px;
+	margin: 0px auto;
+	padding: 1rem;
+}
+
+.design-selection, .zen-resources, .design-archives  {
+	width: 50%;
+	float: left;
+}
+
+.sidebar h3 {
+	font-family: "Bookinsanity", serif;
+	margin-bottom: 0;
+	border-bottom: 2px solid #C5BA93;
+	padding-right: 1rem;
+	width: calc(100% - 2em);
+}
+
+.sidebar h3 + nav ul, .sidebar h3 + ul {
+	margin: 0;
+}
+
+.sidebar ul, .design-archives ul, .zen-resources ul, .design-selection ul {
+	list-style: none;
+	box-sizing: border-box;
+	padding: 1rem 1rem;
+}
+
+
+.design-selection ul li, .design-archives ul li, .zen-resources ul li {
+	color: transparent;
+	text-align: center;
+	padding: .25em;
+
+}
+.design-selection ul li a,
+.design-archives ul li a,
+.zen-resources ul li a
+{
+	visibility: visible;
+	display: inline-block;
+	color: #930C10;;
+}
+
+.design-selection ul li a {
+	width: 40%;
+}
+
+.design-selection ul li:nth-child(even),
+.design-archives ul li:nth-child(odd),
+.zen-resources ul li:nth-child(odd)
+{
+	background: #D6E1C9;
+}
+.design-selection ul li:nth-child(odd),
+.design-archives ul li:nth-child(even),
+.zen-resources ul li:nth-child(even)
+{
+	background-color:  rgba(255, 255, 255, 0.20); 
+}
+
+.design-selection ul li:first-child a:first-child::before {
+	color: black;
+	content: "Theme";
+	font-weight: bold;
+	display: inline-block;
+	width: 100%;
+	text-decoration: none !important;
+	font-family: "Bookinsanity", serif;
+
+}
+
+.design-selection ul li:first-child a:nth-child(2)::before {
+	color: black;
+	content: "Creator";
+	font-weight: bold;
+	width: 100%;
+	display: inline-block;
+	text-decoration: none !important;
+	font-family: "Bookinsanity", serif;
+}
+
+.sidebar {
+	margin-bottom: 5em;
+}
+
+.sidebar::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+
+
+/* Abbreviation Styles */
