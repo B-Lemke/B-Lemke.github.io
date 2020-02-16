@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Unline Styles</title>
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+    <link href="open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="input-string" class="bmd-label-floating">Input HTML</label>
+                    <textarea class="form-control" id="input-string" rows="20"></textarea>
+                </div>
+                <small class="text-muted mt-2" id="input-string-message"></small>
+                <button type="button" class="btn btn-raised btn-primary float-right mt-2" onclick="RemoveStyle()">Unline
+                    Styles</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="html-output" class="bmd-label-floating">Output HTML</label>
+                    <textarea class="form-control" id="html-output" rows="20"></textarea>
+                    <small class="text-muted mt-2" id="html-output-message"></small>
+                    <button data-copy-el="html-output" type="button" class="btn btn-raised btn-primary float-right mt-2" onclick="CopyInput()">Copy HTML</button>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <div class="form-group">
+                    <label for="css-output" class="bmd-label-floating">Output CSS</label>
+                    <textarea class="form-control" id="css-output" rows="20"></textarea>
+                    <small class="text-muted mt-2" id="css-output-message"></small>
+                    <button data-copy-el="css-output" type="button" class="btn btn-raised btn-primary float-right mt-2" onclick="CopyInput()">Copy CSS</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        String.prototype.hashCode = function () {
+            var hash = 0;
+            if (this.length == 0) return hash;
+            for (i = 0; i < this.length; i++) {
+                char = this.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash; // Convert to 32bit integer
+            }
+            return hash;
+        }
+
+        const Icons = {
+            WarningIcon: 'oi-warning',
+            CopiedIcon: 'oi-circle-check',
+
+        }
+
+
+
+        function ShowMessage(icon, message, element){
+            element.innerHTML = '';
+            
+            let iconEl = document.createElement("span");
+            iconEl.classList.add("oi", icon);
+
+            let messageText = document.createElement("span");
+            messageText.innerHTML = message;
+
+            let messageEl = document.createElement("span");
+            messageEl.appendChild(iconEl);
+            messageEl.appendChild(messageText);
+
+            element.appendChild(messageEl);
+        }
+
+        function ClearAllMessages(){
+            htmlInputMessageEl.innerHTML = '';
+            htmlOutputMessageEl.innerHTML = '';
+            cssOutputMessageEl.innerHTML = '';
+        }
+        
+        let domparser = new DOMParser();
+        let htmlInputEl = document.getElementById("input-string");
+        let htmlOutputEl = document.getElementById("html-output");
+        let cssOutputEl = document.getElementById("css-output");
+
+        let htmlInputMessageEl = document.getElementById("input-string-message");
+        let htmlOutputMessageEl = document.getElementById("html-output-message");
+        let cssOutputMessageEl = document.getElementById("css-output-message");
+
+        let testing = "";
+        function RemoveStyle() {
+            ClearAllMessages();
+
+            let htmlString = htmlInputEl.value;
+            
+            if(htmlString == ""){
+                ShowMessage(Icons.WarningIcon, "You must enter some HTML.", htmlInputMessageEl);
+                
+                return;
+            }
+            
+            htmlOutputEl.value = "";
+            cssOutputEl.value = "";
+            let doc = document.createElement("html");
+
+            doc.innerHTML = htmlString;
+
+            let stylesDictionary = new Object();
+
+
+            let nodes = doc.getElementsByTagName("*");
+            
+            for (let i = 0; i < nodes.length; i++) {
+                let style = nodes[i].getAttribute("style");
+                if (style != null && style != "") {
+                    //There is a style on this element
+                    if (stylesDictionary[style.hashCode()] == null) {
+                        stylesDictionary[style.hashCode()] = style;
+                    }
+
+                    //Add class for this style
+                    nodes[i].classList.add("style-" + style.hashCode());
+                    //Remove the style from the element
+                    nodes[i].removeAttribute("style");
+                }
+            }
+
+
+            var styleString = "";
+            //Generate the styles section
+            for (let key of Object.keys(stylesDictionary)) {
+                styleString += `\n .style-${key}{${stylesDictionary[key]}}`;
+            }
+
+            testing = doc;
+            htmlString = doc.innerHTML;
+
+            htmlOutputEl.value = htmlString;
+            cssOutputEl.value = styleString;
+
+            htmlOutputEl.parentElement.classList.add("is-filled");
+            cssOutputEl.parentElement.classList.add("is-filled");
+
+            doc = null;
+            htmlString = null;
+            nodes = null;
+        }
+
+        function CopyInput(){
+            ClearAllMessages();
+
+            let target = event.target || event.srcElement;
+            let id = target.getAttribute("data-copy-el");
+            let copyEl = document.getElementById(id);
+            let messageElId = `${id}-message`;
+            let messageEl = document.getElementById(messageElId);
+
+            if(copyEl.value != null && copyEl.value != ""){
+                copyEl.select();
+                document.execCommand("copy");
+                ShowMessage(Icons.CopiedIcon, "Text has been copied to the clipboard", messageEl);
+            }  
+        }
+
+    </script>
+</body>
+
+
+</html>
