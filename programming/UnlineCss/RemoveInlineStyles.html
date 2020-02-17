@@ -23,12 +23,16 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="navbar navbar-light bg-light">
+        <h1 class="navbar-brand"> Unline HTML  <small class="text-muted border-left pl-2">Remove inline styles.</small></h1>
+    </div>
+    <div class="container mt-2">
+
         <div class="row">
             <div class="col-12">
                 <div class="form-group">
                     <label for="input-string" class="bmd-label-floating">Input HTML</label>
-                    <textarea class="form-control" id="input-string" rows="20"></textarea>
+                    <textarea class="form-control" id="input-string" rows="15"></textarea>
                 </div>
                 <small class="text-muted mt-2" id="input-string-message"></small>
                 <button type="button" class="btn btn-raised btn-primary float-right mt-2" onclick="RemoveStyle()">Unline
@@ -40,21 +44,43 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="html-output" class="bmd-label-floating">Output HTML</label>
-                    <textarea class="form-control" id="html-output" rows="20"></textarea>
+                    <textarea class="form-control" id="html-output" rows="15"></textarea>
                     <small class="text-muted mt-2" id="html-output-message"></small>
-                    <button data-copy-el="html-output" type="button" class="btn btn-raised btn-primary float-right mt-2" onclick="CopyInput()">Copy HTML</button>
+                    <button data-copy-el="html-output" type="button" class="btn btn-raised btn-primary float-right mt-2"
+                        onclick="CopyInput()">Copy HTML</button>
                 </div>
             </div>
             <div class="col-md-6 form-group">
                 <div class="form-group">
                     <label for="css-output" class="bmd-label-floating">Output CSS</label>
-                    <textarea class="form-control" id="css-output" rows="20"></textarea>
+                    <textarea class="form-control" id="css-output" rows="15"></textarea>
                     <small class="text-muted mt-2" id="css-output-message"></small>
-                    <button data-copy-el="css-output" type="button" class="btn btn-raised btn-primary float-right mt-2" onclick="CopyInput()">Copy CSS</button>
+                    <button data-copy-el="css-output" type="button" class="btn btn-raised btn-primary float-right mt-2"
+                        onclick="CopyInput()">Copy CSS</button>
                 </div>
             </div>
         </div>
 
+
+        <class id="character-counts" class="row border-top py-4 mt-4 d-none">
+            <h6 class="col-12 text-muted">
+                Character Counts
+            </h6>
+            <div class="row col-12 py-4 text-center  justify-content-between">
+                <div class="col-3 p-4 border">
+                    <div id="char-count-input"></div>
+                    <div>Original HTML</div>
+                </div>
+                <div class="col-3 p-4 border" >
+                    <div id="char-count-html-output"></div>
+                    <div>Output HTML</div>
+                </div>
+                <div class="col-3 p-4 border">
+                    <div id="char-count-css-output"></div>
+                    <div>Output CSS</div>
+                </div>
+            </div>
+    </div>
     </div>
     <script>
         String.prototype.hashCode = function () {
@@ -76,9 +102,9 @@
 
 
 
-        function ShowMessage(icon, message, element){
+        function ShowMessage(icon, message, element) {
             element.innerHTML = '';
-            
+
             let iconEl = document.createElement("span");
             iconEl.classList.add("oi", icon);
 
@@ -92,12 +118,12 @@
             element.appendChild(messageEl);
         }
 
-        function ClearAllMessages(){
+        function ClearAllMessages() {
             htmlInputMessageEl.innerHTML = '';
             htmlOutputMessageEl.innerHTML = '';
             cssOutputMessageEl.innerHTML = '';
         }
-        
+
         let domparser = new DOMParser();
         let htmlInputEl = document.getElementById("input-string");
         let htmlOutputEl = document.getElementById("html-output");
@@ -107,21 +133,35 @@
         let htmlOutputMessageEl = document.getElementById("html-output-message");
         let cssOutputMessageEl = document.getElementById("css-output-message");
 
+        let characterCounts = document.getElementById("character-counts");
+        let characterCountInput = document.getElementById("char-count-input");
+        let characterCountHtmlOutput = document.getElementById("char-count-html-output");
+        let characterCountCssOutput = document.getElementById("char-count-css-output");
+        
+        
         let testing = "";
         function RemoveStyle() {
             ClearAllMessages();
 
             let htmlString = htmlInputEl.value;
-            
-            if(htmlString == ""){
+
+            if (htmlString == "") {
                 ShowMessage(Icons.WarningIcon, "You must enter some HTML.", htmlInputMessageEl);
-                
+
                 return;
             }
-            
+
             htmlOutputEl.value = "";
             cssOutputEl.value = "";
-            let doc = document.createElement("html");
+
+            let doc = "";
+            if (htmlString.includes("<html")) {
+                doc = document.createElement("html");
+            } else if (htmlString.includes("<body")) {
+                doc = document.createElement("body");
+            } else {
+                doc = document.createElement("div");
+            }
 
             doc.innerHTML = htmlString;
 
@@ -129,12 +169,13 @@
 
 
             let nodes = doc.getElementsByTagName("*");
-            
+
             for (let i = 0; i < nodes.length; i++) {
                 let style = nodes[i].getAttribute("style");
                 if (style != null && style != "") {
                     //There is a style on this element
                     if (stylesDictionary[style.hashCode()] == null) {
+                        console.log(style.hashCode());
                         stylesDictionary[style.hashCode()] = style;
                     }
 
@@ -145,7 +186,7 @@
                 }
             }
 
-
+            console.log(stylesDictionary);
             var styleString = "";
             //Generate the styles section
             for (let key of Object.keys(stylesDictionary)) {
@@ -153,7 +194,12 @@
             }
 
             testing = doc;
-            htmlString = doc.innerHTML;
+            if (doc.tagName == "DIV") {
+                htmlString = doc.innerHTML;
+            } else {
+                htmlString = doc.outerHTML;
+            }
+
 
             htmlOutputEl.value = htmlString;
             cssOutputEl.value = styleString;
@@ -161,12 +207,18 @@
             htmlOutputEl.parentElement.classList.add("is-filled");
             cssOutputEl.parentElement.classList.add("is-filled");
 
+            characterCounts.classList.remove("d-none");
+            characterCountHtmlOutput.innerHTML = htmlString.length;
+            characterCountCssOutput.innerHTML = styleString.length;
+            characterCountInput.innerHTML = htmlInputEl.value.length;
+
+
             doc = null;
             htmlString = null;
             nodes = null;
         }
 
-        function CopyInput(){
+        function CopyInput() {
             ClearAllMessages();
 
             let target = event.target || event.srcElement;
@@ -175,11 +227,11 @@
             let messageElId = `${id}-message`;
             let messageEl = document.getElementById(messageElId);
 
-            if(copyEl.value != null && copyEl.value != ""){
+            if (copyEl.value != null && copyEl.value != "") {
                 copyEl.select();
                 document.execCommand("copy");
                 ShowMessage(Icons.CopiedIcon, "Text has been copied to the clipboard", messageEl);
-            }  
+            }
         }
 
     </script>
