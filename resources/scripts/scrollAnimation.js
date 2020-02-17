@@ -1,13 +1,11 @@
 
 
-console.log("Hey");
 $(document).ready(function() {
   CheckFadeAnimation();
 
 
     /* Every time the window is scrolled ... */
     $('body').scroll( function(){
-      console.log("Scrolled");
         /* Check the location of each desired element */
         CheckFadeAnimation();
 
