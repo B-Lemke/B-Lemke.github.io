@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Monica</title>
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <style>
+        #bouncer {
+            width: 3vw;
+            height: 3vh;
+            background: rebeccapurple;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+        }
+
+        #face {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            font-size: 2em;
+        }
+
+        #face-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        html,
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #bounce-area {
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #monica-time {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #monica-time-message {
+            width: 100%;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20vw;
+            color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <area id="bounce-area">
+    <div id="bouncer">
+        <div id="face-container">
+            <div id="face">
+                <div id="left">
+                    👁️
+                </div>
+                <div id="center">
+                    👄
+                </div>
+                <div id="right">
+                    👁️
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="monica-time">
+        <h1 id="monica-time-message">It's monica time</h1>
+    </section>
+    </area>
+
+
+
+
+    <script>
+
+        let vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        let vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+        const MonicaTimeEl = document.getElementById("monica-time");
+        const body = document.getElementsByTagName("body")[0];
+        const centerEl = document.getElementById("center");
+
+        class Bouncer {
+            constructor(bounceEl) {
+                this.xPos = 0;
+                this.yPos = 0;
+                this.width = 0.1 * vh;
+                this.height = 0.05 * vh;
+                this.xVelocity = (vw - this.width) / 8 / 50;
+                this.yVelocity = (vh - this.height) / 9 / 50;
+                this.bouncingElement = bounceEl;
+
+                this.bouncingElement.style.position = "absolute";
+                this.bouncingElement.style.width = this.width + "px";
+                this.bouncingElement.style.height = this.height + "px";
+            }
+
+            RecalculateSizes(oldVw, oldVh) {
+                this.xVelocity = this.xVelocity * (vw / oldVw);
+                this.yVelocity = this.yVelocity * (vh / oldVh);
+                this.xPos = this.xPos * (vw / oldVw);
+                this.yPos = this.yPos * (vh / oldVh);
+                this.width = 0.1 * vh;
+                this.height = 0.05 * vh;
+            }
+
+
+            Move() {
+                this.xPos += this.xVelocity;
+                this.yPos += this.yVelocity;
+                this.CheckPosition();
+            }
+
+            Show() {
+                this.bouncingElement.style.left = this.xPos + "px";
+                this.bouncingElement.style.top = this.yPos + "px";
+            }
+
+            CheckPosition() {
+                if (this.xPos <= 0) {
+                    this.xPos = 0;
+                    this.xVelocity *= -1;
+                } else if (this.xPos + this.width >= vw) {
+                    this.xPos = vw - this.width;
+                    this.xVelocity *= -1
+                }
+
+                if (this.yPos <= 0) {
+                    this.yPos = 0;
+                    this.yVelocity *= -1;
+                } else if (this.yPos + this.height >= vh) {
+                    this.yPos = vh - this.height;
+                    this.yVelocity *= -1
+                }
+
+
+                if ((this.xPos <= 3 || this.xPos >= vw - this.width - this.xVelocity - 3) && (this.yPos <= 3 || this.yPos >= vh - this.height - this.yVelocity - 3)) {
+                    this.CornerHit();
+                }
+            }
+
+            CornerHit() {
+                MonicaTime();
+
+                setTimeout( MonicaTimeDone, 5000);
+            }
+
+        }
+
+        let bounceEl = document.getElementById("bouncer");
+        let bouncer = new Bouncer(bounceEl);
+
+        setInterval(onTimerTick, 5); // 33 milliseconds = ~ 30 frames per sec
+
+        function MonicaTime() {
+            body.style.backgroundColor = "black";
+            MonicaTimeEl.style.display = "flex";
+            centerEl.innerHTML = "👅";
+        }
+
+        function MonicaTimeDone() {
+            body.style.backgroundColor = "white";
+            MonicaTimeEl.style.display = "none";
+            centerEl.innerHTML = "👄";
+        }
+
+        function onTimerTick() {
+            bouncer.Move();
+            bouncer.Show();
+        }
+
+        function ResizeWindow() {
+            let oldVh = vh;
+            let oldVw = vw;
+            vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+            bouncer.RecalculateSizes(oldVw, oldVh);
+
+        }
+
+        if (window.attachEvent) {
+            window.attachEvent('onresize', function () {
+                ResizeWindow();
+
+            });
+        }
+        else if (window.addEventListener) {
+            window.addEventListener('resize', function () {
+                ResizeWindow();
+            }, true);
+        }
+
+
+    </script>
+</body>
+
+</html>
