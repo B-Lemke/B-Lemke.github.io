@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treehouse Badges</title>
+
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            min-height: 100%;
+            background-color: #3e474f;
+        }
+
+        #content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #sash-inside,
+        #sash-outside {
+            min-height: 300px;
+            background-color: #5fcf80;
+        }
+
+        #sash-inside {
+            padding: 20px;
+        }
+
+        .low-shadow {
+            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+                0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+                0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+        }
+
+        .rounded-corners {
+            border-radius: 10px;
+        }
+
+        .fabric {
+            background-image: url("texture.png");
+        }
+
+        .sewn-border {
+            border: 2px dashed #fff;
+        }
+
+        #sash-outside {
+            margin: 10px;
+            padding: 8px
+        }
+
+        #sash-header-patch-outside {
+            width: 66%;
+            padding: 8px;
+            margin: 0px auto;
+        }
+
+        #sash-header-patch-outside,
+        #sash-header-patch-inside {
+            background-color: #FFF;
+        }
+
+        #sash-header-patch-inside {
+            padding: 20px;
+            text-align: center;
+            color: #343b3d;
+        }
+
+        #profile-image-badge-inside {
+            width: 100px;
+            height: 100px;
+            margin: 4px;
+            padding: 4px;
+            border-radius: 100%;
+        }
+
+        #sash-header-patch-inside h2 {
+            font-size: 2em;
+        }
+
+        #sash-header-patch-inside h1 {
+            font-size: 3em;
+        }
+
+        #sash-header-patch-inside p {
+            font-size: 1em;
+        }
+
+        #profile-image-badge-outside {
+            width: 120px;
+            height: 120px;
+            background-color: #9F4B84;
+            border-radius: 100%;
+            margin: auto;
+        }
+
+        #sash-header-patch-inside h1,
+        #sash-header-patch-inside h2 {
+            padding: 0;
+            margin: 4px 0;
+        }
+
+        #sash-header-patch-inside img {
+            background: url("texture.png") repeat, rgba(0, 0, 0, 0.2);
+        }
+
+        #sash-body {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .badge-container {
+            padding: 10px;
+            margin: 10px;
+            max-width: 20%;
+            display: inline-block;
+        }
+
+        .badge-image {
+            max-width: 100%;
+            width: 100%;
+            filter: drop-shadow(0 3px 8px rgb(0, 0, 0, 0.2));
+        }
+
+        .badge-detail-patch-outside,
+        .badge-detail-patch-inside {
+            background-color: #FFF;
+
+
+        }
+
+        .badge-detail-patch-outside {
+            padding: 5px;
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        .badge-detail-patch-inside {
+            text-align: center;
+            padding: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .badge-detail-patch-inside h5 {
+            font-size: 1.2em;
+            margin: 10px auto 10px;
+            position: relative;
+        }
+        .badge-detail-patch-inside h5:not(:only-child)::after {
+            content: "";
+            width: 60%;
+            border-bottom: 2px dashed #fff;
+            position: absolute;
+            bottom: -8px;
+            left: 20%;
+            margin: 0px auto;
+        }
+
+        .badge-detail-patch-inside p {
+            margin: 4px auto;
+        }
+
+
+        #loading {
+            width: 80%;
+            max-width: 1200px;
+            height: 300px;
+            margin: 100px auto;
+            padding: 10px;
+            background-color: #5fcf80;
+        }
+
+        #loading-inside {
+            width: 100%;
+            height: 100%;
+            background-color: #5fcf80;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #loading-inside p {
+            font-size: 5em;
+            font-weight: bold;
+        }
+
+        /* medium screens */
+        @media only screen and (max-width: 992px) {
+
+            #sash-header-patch-inside h2 {
+                font-size: 1.5em;
+            }
+
+            #sash-header-patch-inside h1 {
+                font-size: 2em;
+            }
+
+            #sash-header-patch-inside p {
+                font-size: 1em;
+            }
+
+
+            #sash-header-patch-outside {
+                width: 90%;
+            }
+        }
+
+        /* Small screens */
+        @media only screen and (max-width: 520px) {
+            #sash-header-patch-inside h2 {
+                font-size: 1.2em;
+            }
+
+            #sash-header-patch-inside h1 {
+                font-size: 1.5em;
+            }
+
+            #sash-header-patch-inside p {
+                font-size: 1em;
+            }
+            #sash-header-patch-inside img {
+                width: 50px;
+                height: 50px
+            }
+            #profile-image-badge-outside {
+                width: 70px;
+                height: 70px;
+            }
+
+            #sash-body {
+                padding: 20px 0;
+            }
+
+            .badge-container {
+                max-width: 40%;
+                margin: 0;
+                padding: 0;
+            }
+            .badge-detail-patch-inside h5 {
+                font-size: 1em;
+            }
+
+            
+            #loading-inside p {
+                font-size: 3em;
+                font-weight: bold;
+            }
+        }
+
+        .display-none {
+            display: none;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <main id="content">
+        <div id="sash-outside" class="fabric rounded-corners low-shadow display-none">
+            <div id="sash-inside" class="sewn-border fabric rounded-corners low-shadow">
+                <div id="sash-header-patch-outside" class="fabric rounded-corners low-shadow">
+                    <div id="sash-header-patch-inside" class="fabric rounded-corners low-shadow sewn-border">
+                        <h2 id="user-name"></h2>
+                        <h1>Team Treehouse Badges</h1>
+
+                        <div id="profile-image-badge-outside" class="fabric low-shadow">
+                            <img src="" id="profile-image-badge-inside" class="fabric low-shadow sewn-border">
+                        </div>
+                        <p>View <a href="" id="link-to-profile"></a> Profile</p>
+                    </div>
+
+                </div>
+                <div id="sash-body">
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="fabric rounded-corners low-shadow">
+            <div id="loading-inside" class="fabric rounded-corners low-shadow sewn-border">
+                <p id="loading-message">Loading...</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const userNameEl = document.getElementById("user-name");
+        const linkToProfileEl = document.getElementById("link-to-profile");
+        const profileImageEl = document.getElementById("profile-image-badge-inside");
+        const sashBody = document.getElementById("sash-body");
+        const sashOutside = document.getElementById("sash-outside");
+        const loadingEl = document.getElementById("loading");
+        const loadingMessage = document.getElementById("loading-message");
+
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const user = urlParams.get('user');
+
+        const urlName = user || "brodericklemke";
+
+        fetch(`https://teamtreehouse.com/${urlName}.json`)
+            .then((response) => {
+                return response.json();
+            })
+            .then((myJson) => {
+                PopulateSash(myJson);
+                sashOutside.classList.remove("display-none");
+                loadingEl.classList.add("display-none");
+            }).catch(error => {
+                loadingMessage.innerHTML = "There was an error loading the information. Please try again later";
+                loadingMessage.style.fontSize = "2em";
+            });
+
+
+        function PopulateSash(json) {
+            userNameEl.innerHTML = `${json["name"]}'s`;
+            linkToProfileEl.href = json["profile_url"];
+            linkToProfileEl.innerHTML = `${json["profile_name"]}'s`;
+            profileImageEl.src = json["gravatar_url"];
+
+            const badges = json["badges"].reverse();
+
+            badges.forEach(badge => {
+
+                let newBadgeDiv = document.createElement("div");
+                newBadgeDiv.classList.add("badge-container");
+
+                let newBadgeImage = document.createElement("img");
+                newBadgeImage.classList.add("badge-image");
+                newBadgeImage.src = badge["icon_url"];
+
+                let badgeDetailPatchOutsideEl = document.createElement("div");
+                badgeDetailPatchOutsideEl.classList.add("badge-detail-patch-outside", "fabric", "rounded-corners", "low-shadow");
+
+                let badgeDetailPatchInsideEl = document.createElement("div");
+                badgeDetailPatchInsideEl.classList.add("badge-detail-patch-inside", "fabric", "rounded-corners", "low-shadow", "sewn-border");
+
+                let badgeNameEl = document.createElement("h5");
+                badgeNameEl.innerHTML = badge.name;
+                badgeDetailPatchInsideEl.appendChild(badgeNameEl);
+
+                let courseNameEl = document.createElement("p");
+                if (badge["courses"].length > 0) {
+                    courseNameEl.innerHTML = badge["courses"][0]["title"];
+                    badgeDetailPatchInsideEl.appendChild(courseNameEl);
+                }
+
+                newBadgeDiv.appendChild(newBadgeImage);
+                sashBody.appendChild(newBadgeDiv);
+                badgeDetailPatchOutsideEl.appendChild(badgeDetailPatchInsideEl);
+                newBadgeDiv.appendChild(badgeDetailPatchOutsideEl);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
