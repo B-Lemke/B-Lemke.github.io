@@ -20,6 +20,7 @@ body{
   width: 80%;
   margin: 20px auto;
   border-radius: 5px;
+  padding: 10px;
 }
 
 #loadingMessage{
@@ -42,4 +43,8 @@ body{
 
 #normalImage{
     margin: 10px;
+}
+
+.d-none {
+  display: none;
 }

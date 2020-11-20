@@ -1,9 +1,9 @@
 var sourceImage;
 
 var balls = [];
-var numBalls = 5000;
+//var numBalls = 100;
 
-var maxMovement = 3;
+var maxMovement = 10;
 var maxRadius;
 
 var imgURL;
@@ -16,7 +16,7 @@ var newYear;
 var notDoubled = true;
 
 
-function preload(){
+function preload() {
   //Get info from the NASA api.
   newImage();
 }
@@ -42,7 +42,7 @@ function draw() {
     balls[i].updatePosition();
     balls[i].displayBall();
 
-    if (balls[i].radius < .5){
+    if (balls[i].radius < .5) {
       //if ball too small, remove it
       balls.splice(i, 1);
     }
@@ -52,7 +52,7 @@ function draw() {
   //console.log(balls.length);
 
   //when out of balls
-  if (balls.length == 0 && notDoubled){
+  if (balls.length == 0 && notDoubled) {
     //stop looping if no more balls left
 
     //was getting an odd error where this code would run twice. This variable stops that
@@ -60,38 +60,37 @@ function draw() {
     notDoubled = false;
 
     noLoop();
-    console.log("Done");
     //pick new image after 5 seconds
-    setTimeout(function(){newImage();}, 5000);
+    setTimeout(function () { newImage(); }, 5000);
   }
 }
 
-function ball(){
+function ball() {
   //constructor
   this.x = Math.floor(random(sourceImage.width));
   this.y = Math.floor(random(sourceImage.height));
   this.radius = random(maxRadius);
 
   //function to move its x and y
-  this.updatePosition = function(){
+  this.updatePosition = function () {
     //move up or down 1
-    this.x = this.x + Math.floor(random(-maxMovement, maxMovement+1));
-    this.y = this.y + Math.floor(random(-maxMovement, maxMovement+1));
+    this.x = this.x + Math.floor(random(-maxMovement, maxMovement + 1));
+    this.y = this.y + Math.floor(random(-maxMovement, maxMovement + 1));
 
-    if(this.x < -this.radius || this.x > sourceImage.width + this.radius || this.y < -this.radius || this.y > sourceImage.height + this.radius){
+    if (this.x < -this.radius || this.x > sourceImage.width + this.radius || this.y < -this.radius || this.y > sourceImage.height + this.radius) {
       //if out of bounds, pick new x and y;
       this.x = Math.floor(random(sourceImage.width));
       this.y = Math.floor(random(sourceImage.height));
     }
-    //optional code to increase size over time
+    //optional code to decrease size over time
     this.radius = this.radius * 0.99;
   }
 
-  this.displayBall = function (){
-    var index = (this.y*sourceImage.width + this.x)*4;
+  this.displayBall = function () {
+    var index = (this.y * sourceImage.width + this.x) * 4;
     var r = sourceImage.pixels[index];
-    var g = sourceImage.pixels[index+1];
-    var b = sourceImage.pixels[index+2];
+    var g = sourceImage.pixels[index + 1];
+    var b = sourceImage.pixels[index + 2];
 
     var c = color(r, g, b, globalAlpha);
 
@@ -102,9 +101,8 @@ function ball(){
 
 }
 
-function displayErrorScreen(){
-  console.log("Whoops");
-  createCanvas(400,400);
+function displayErrorScreen() {
+  createCanvas(400, 400);
   background(0);
   textSize(32);
   fill(255);
@@ -117,7 +115,7 @@ function displayErrorScreen(){
 
 
 
-function getNewNASADate(){
+function getNewNASADate() {
 
   /////////////////////////////////////////////////////
   // Random APOD Date Generator                      //
@@ -132,10 +130,10 @@ function getNewNASADate(){
   //taking off 6 hours because APOD goes by east coast USA time.
   //should be enough to keep anyone from landing on future APODs which won't be published yet in their timezone
   //unless their computer clock is set way off, then they'll get 404's all the time probably
-  max = max-(5*60*60*1000);
+  max = max - (5 * 60 * 60 * 1000);
 
 
-  var random_date = Math.round(min+(Math.random()*(max-min))); //ahh, a random APOD date!
+  var random_date = Math.round(min + (Math.random() * (max - min))); //ahh, a random APOD date!
 
   //but wait...
   //there's one section of missing APODs in the history of APODs
@@ -145,57 +143,53 @@ function getNewNASADate(){
   var missing_max = new Date(1995, 5, 19, 23, 59, 59, 999).getTime(); //1995 June 19 23:59:59.999
 
   //if our random date falls in this range, remake it.
-  while(random_date >= missing_min && random_date <= missing_max) {
-  	random_date = Math.round(min+(Math.random()*(max-min)));
+  while (random_date >= missing_min && random_date <= missing_max) {
+    random_date = Math.round(min + (Math.random() * (max - min)));
   }
 
   //convert the timestamp back into a date object
   random_date = new Date(random_date);
   newYear = random_date.getFullYear().toString().slice(-4); //in the year 2095 we're gonna have problems
-  newMonth = (0+(random_date.getMonth()+1).toString()).slice(-2); //zero pad the month
-  newDay = (0+(random_date.getDate().toString())).slice(-2); //zero pad the day
+  newMonth = (0 + (random_date.getMonth() + 1).toString()).slice(-2); //zero pad the month
+  newDay = (0 + (random_date.getDate().toString())).slice(-2); //zero pad the day
 
 }
 
-function newImage(){
-  console.log("Getting image");
+function newImage() {
+  //Clear out balls
+  balls = [];
+
   getNewNASADate();
-  var apiURL = 'https://api.nasa.gov/planetary/apod?date=' + newYear + '-' + newMonth + '-' + newDay+"&api_key=py9yOVmf7v7jKOqbzWZ6uR1KqhxhBWhJhj0JkLxG";
+  var apiURL = 'https://api.nasa.gov/planetary/apod?date=' + newYear + '-' + newMonth + '-' + newDay + "&api_key=py9yOVmf7v7jKOqbzWZ6uR1KqhxhBWhJhj0JkLxG";
   //Broken link for testing:
   //apiURL = "https://api.nasa.gov/planetary/apod?api_key=py9yOVmf7v7jKOqbzWZ6uR1KqhxhBWhJhj0JkLxG&date=2014-01-12"
-  var spaceImage = loadJSON(apiURL,function(){
-    console.log("Loading JSON: " + spaceImage);
+  var spaceImage = loadJSON(apiURL, function () {
     //once the JSON has been loaded, callback to this function and loas the image into the source image variable
     imgURL = spaceImage.hdurl;
-    sourceImage = loadImage(imgURL, function(){
-      console.log("Image loaded");
-      console.log(sourceImage);
-        console.log(spaceImage);
-        setupCanvas(spaceImage);
+    imgURL = 'https://cors-anywhere.herokuapp.com/' + imgURL;
 
-    });
+    sourceImage = loadImage(imgURL, function () {
+      setupCanvas(spaceImage);
+    }, (resp, err) => {
+      console.log(resp, err);
+      document.getElementById('textInfo').innerHTML = 'ERROR LOADING DATA - TRY AGAIN LATER';
+      document.getElementById('loadingMessage').parentNode.removeChild(document.getElementById('loadingMessage'));
+      document.getElementById('textInfo').classList.remove('d-none');
+    })
 
   },
-  //if the JSON can't be loaded, call this function again to get a new URL for the JSON
-  function(){newImage();});
+    //if the JSON can't be loaded, call this function again to get a new URL for the JSON
+    function () { newImage(); });
 
 
 
 }
 
-function setupCanvas(spaceImage){
+function setupCanvas(spaceImage) {
   //remove old canvas
-
-  console.log("Starting setup");
-  console.log(sourceImage);
-
-  //size before:
-  console.log("Before: " + sourceImage.width + "            " + sourceImage.height);
 
   checkImageTooBig();
 
-  //size after
-  console.log("After " + sourceImage.width + "            " + sourceImage.height);
   var cnv = createCanvas(sourceImage.width, sourceImage.height);
 
   //put canvas in sketch holder div
@@ -205,20 +199,23 @@ function setupCanvas(spaceImage){
   sourceImage.loadPixels();
   noStroke();
 
-  maxRadius = sourceImage.width/10;
+  maxRadius = sourceImage.width / 5;
 
   setNumBalls();
 
   //make balls
   for (var i = 0; i < numBalls; i++) {
-      var newBall = new ball();
-      balls.push(newBall);
-    }
+    var newBall = new ball();
+    balls.push(newBall);
+  }
 
-    notDoubled = true;
+  notDoubled = true;
 
   //restart loop if turned off
   loop();
+
+  //Show photo info
+  document.getElementById('textInfo').classList.remove('d-none');
 
   //Display photo info
   document.getElementById('title').textContent = spaceImage.title;
@@ -227,43 +224,41 @@ function setupCanvas(spaceImage){
 
   //remove old link
   var myNode = document.getElementById("normalImage");
-   myNode.removeChild(myNode.firstChild);
+  myNode.removeChild(myNode.firstChild);
 
   //provide link to image
   var a = document.createElement('a');
-    a.setAttribute('href',spaceImage.hdurl);
-    a.innerHTML = "[Link]";
-    myNode.appendChild(a);
+  a.setAttribute('href', spaceImage.hdurl);
+  a.innerHTML = "[Link]";
+  myNode.appendChild(a);
 
-    //if there is a copyright, add it
-    if (spaceImage.copyright !== undefined){
-        document.getElementById('copyright').textContent = " \u00A9 Copyright: " + spaceImage.copyright;
-    }
-    else{
-      console.log("No copyright");
-    }
+  //if there is a copyright, add it
+  if (spaceImage.copyright !== undefined) {
+    document.getElementById('copyright').textContent = " \u00A9 Copyright: " + spaceImage.copyright;
+  }
+  else {
+    console.log("No copyright");
+  }
 }
 
 
 
-function checkImageTooBig(){
+function checkImageTooBig() {
   //Check to see if the image is too big for the current window size
-  if(sourceImage.width > window.innerWidth){
+  if (sourceImage.width > window.innerWidth) {
     //image bigger than displayErrorScreen
-    sourceImage.resize( window.innerWidth - 300, 0);
+    sourceImage.resize(window.innerWidth - 300, 0);
   }
-  if(sourceImage.height > window.innerHeight){
-    sourceImage.resize( 0, window.innerHeight - 300);
+  if (sourceImage.height > window.innerHeight) {
+    sourceImage.resize(0, window.innerHeight - 300);
   }
 }
 
-function setNumBalls(){
+function setNumBalls() {
   //set the number of balls to be proportional to the size of the image. Use the largest dimension
-  if(sourceImage.width > sourceImage.height){
-    numBalls = sourceImage.width * 3;
-    console.log("Num of balls: " + numBalls);
-  } else{
-    numBalls = sourceImage.height * 3;
-        console.log("Num of balls: " + numBalls)
+  if (sourceImage.width > sourceImage.height) {
+    numBalls = sourceImage.width * 2;
+  } else {
+    numBalls = sourceImage.height * 2;
   }
 }
